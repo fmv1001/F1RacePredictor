@@ -1,4 +1,4 @@
-driver_id,driver_url,givenName,familyName,driver_date_of_birth,driver_nationality,driver_permanent_number,code
+driver_id,driver_url,driver_first_name,driver_last_name,driver_date_of_birth,driver_nationality,driver_permanent_number,driver_code
 abate,http://en.wikipedia.org/wiki/Carlo_Mario_Abate,Carlo,Abate,1932-07-10,Italian,,
 abecassis,http://en.wikipedia.org/wiki/George_Abecassis,George,Abecassis,1913-03-21,British,,
 acheson,http://en.wikipedia.org/wiki/Kenny_Acheson,Kenny,Acheson,1957-11-27,British,,
