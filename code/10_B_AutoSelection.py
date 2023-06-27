@@ -84,6 +84,4 @@ for variable_obj in variables_objetivo:
     df_data = df_final.drop(columnas_a_eliminar, axis=1)
 
     # Save data
-    df_data.to_csv(f'data/coded_auto_selection_data2_{variable_obj}.csv', index=False)
-    df_final.to_csv(f'data/coded_auto_selection_data_{variable_obj}.csv', index=False)
-
+    df_data.to_csv(f'data/coded_auto_selection_data_{variable_obj}.csv', index=False)
