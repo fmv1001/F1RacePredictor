@@ -8,84 +8,80 @@ En el presente anexo se describirá la planificación llevada a cabo en el proye
 
 Se va a seguir una planificación por \textit{sprints}, la cual se explica a continuación.
 
-\subsection{Sprint 0: Planificación y Objetivos del Proyecto (1 semana)}
-
-Planificar el desarrollo en sprints del proyecto.
-La planificación del desarrollo del proyecto comienza con la definición de los objetivos del proyecto y los resultados esperados. Además en este punto vamos a dividir el trabajo en tareas mas pequeñas.
-
-Establecer los objetivos principales del proyecto.
-Tras su estudio se van a establecer como objetivos principales del proyecto comparar varios algoritmos para encontrar el más óptimo y desarrollar este para maximizar su desempeño.
-
-Escoger los entornos de desarrollo, de gestión y de comunicación.
-Como entorno de desarrollo vamos a utilizar Visual Sudio Code por la versatilidad que nos brinda, podremos desarrollar tanto la aplicación como el modelo en esta herramienta.
-
-
-\subsection{Sprint 1: Comprensión del problema y recolección de datos (1 semana)} 
-
+\subsection{Sprint 0: Planificación y Objetivos del Proyecto (2 semana)}
+La planificación se llevo a cabo en 3 fases.
 \begin{itemize}
-\item
-Comprender el dominio de la F1.
-El objetivo principal de esta sección es obtener una comprensión profunda del mundo de las carreras de Fórmula 1 y familiarizarse con sus principales características. En este punto examinaré a fondo el dominio de este deporte de élite utilizando mi conocimiento y entusiasmo como aficionado a la Fórmula 1.
-A través de una investigación profunda de fuentes confiables y un análisis de datos históricos, además de mi experiencia personal como entusiasta de la Fórmula 1.
-\item
-Familiarizarse con las fuentes de datos disponibles.
-Para este apartado cuento con mi experiencia como aficionado, ya que conozco muchas de las páginas que hablan de fórmula 1 y varias de ellas que albergan datos históricos. Inicialmente se han escogido para su estudio las siguientes webs: \href{https://www.statsf1.com/}{\textit{statsf1}}, \href{https://www.racing-reference.info/}{\textit{racing-reference}}, \href{https://www.f1-fansite.com/}{\textit{f1-fansite}},  \href{https://www.motorsportstats.com/}{\textit{motorsportstats}}, \href{https://www.formula1.com/}{\textit{Fórmula 1}} y \href{https://ergast.com/mrd/}{\textit{Ergast Developer API}}. 
+    \item
+    Planificar el desarrollo en sprints del proyecto.
+    La planificación del desarrollo del proyecto comienza con la definición de los objetivos del proyecto y los resultados esperados. Además en este punto vamos a dividir el trabajo en tareas mas pequeñas.
+    \item
+    Establecer los objetivos principales del proyecto.
+    Inicialmente se estableció como objetivo principal del proyecto comparar varios algoritmos para encontrar el más óptimo, pero posteriormente se decidió comparar para diferentes algoritmo su desempeño en función de si la selecciónde datos fue manual o miente un algoritmo, además de desarrollar uno de los modelos para maximizar su desempeño.
+    \item
+    Escoger los entornos de desarrollo, de gestión y de comunicación.
+    Como entorno de desarrollo vamos a utilizar Visual Sudio Code por la versatilidad que nos brinda, podremos desarrollar tanto la aplicación como el modelo en esta herramienta.
+\end{itemize}
+Este sprint se previó en una semana de duración pero realmente llevó a cabo en dos, para realizar una buena planificación y saber a dónde nos lleva el desarrollo del proyecto.
 
-Una vez identificadas, se realizó un estudio de las fuentes de datos. Esto implicó examinar la precisión de los datos, la metodología aplicada para su recopilación, su consistencia y cualquier posible sesgo o limitación en el conjuntos total de datos. También, hay que conocer los formatos y estructuras de los datos disponibles. Algunas webs no permiten descargar los datos y hay que usar técnicas de webscrapping y es por eso que me he decantado por la API de Ergast, porque permite descargar los datos en formato json para un tratado de estos más fácil.
-\item
-Recopilación de los datos necesarios para construir el modelo.
+\subsection{Sprint 1: Comprensión del problema y buscar fuentes de datos (1 semana)} 
+Este sprint se dividió en varias tareas:
+\begin{itemize}
+    \item
+    Comprender el dominio de la F1.
+    El objetivo principal de esta sección es obtener una comprensión profunda del mundo de las carreras de Fórmula 1 y familiarizarse con sus principales características. En este punto examinaré a fondo el dominio de este deporte de élite utilizando mi conocimiento y entusiasmo como aficionado a la Fórmula 1.
+    A través de una investigación profunda de fuentes confiables y un análisis de datos históricos, además de mi experiencia personal como entusiasta de la Fórmula 1.
+    \item
+    Familiarizarse con las fuentes de datos disponibles y escoger una.
+    Para este apartado cuento con mi experiencia como aficionado, ya que conozco muchas de las páginas que hablan de fórmula 1 y varias de ellas que albergan datos históricos. Inicialmente se han escogido para su estudio las siguientes webs: \href{https://www.statsf1.com/}{\textit{statsf1}}, \href{https://www.racing-reference.info/}{\textit{racing-reference}}, \href{https://www.f1-fansite.com/}{\textit{f1-fansite}},  \href{https://www.motorsportstats.com/}{\textit{motorsportstats}}, \href{https://www.formula1.com/}{\textit{Fórmula 1}} y \href{https://ergast.com/mrd/}{\textit{Ergast Developer API}}. 
+    Una vez identificadas, se realizó un estudio de las fuentes de datos. Esto implicó examinar la precisión de los datos, la metodología aplicada para su recopilación, su consistencia y cualquier posible sesgo o limitación en el conjuntos total de datos. También, hay que conocer los formatos y estructuras de los datos disponibles. Algunas webs no permiten descargar los datos y hay que usar técnicas de webscrapping y es por eso que me he decantado por la API de Ergast, porque permite descargar los datos en formato json para un tratado de estos más fácil.
 \end{itemize}
 
+Este sprint se llevó a cabo en el tiempo esperado.
 
-\subsection{Sprint 2: Preparación de los datos (2 semanas)}
+\subsection{Sprint 2: Descarga de datos (3 semanas)}
+Para llevar a cabo el sprint se realizaron las siguientes tareas
+\begin{itemize}
+    \item 
+    Creación de medios para la obtención de los datos.
+    Una vez escogida la fuente se deben crear los medios necesarios para descargar esos datos. El objetivo de esta tarea fue crear clientes python para obtener los datos de la API de Ergast.
+    Además, se obtuvieron datos de la página web de la página ofical de la Fórmula 1, que al final se descartaron por falta de información, lo que retrasó el proyecto algunos días. 
+    \item
+    Recopilación de los datos necesarios.
+    En este momento se descargaron todos los datos suministrados por la API y además se decidió obtener algunos datos más para el entrenamiento, como puede ser la altitud del circuito con respecto al nivel del mar, el clima de las carreras, etc.
+\end{itemize}
 
-Descargar y limpiar los datos relevantes.
+Este sprint se planificó para una semana pero realmente se tardaron 3 semanas debido a mi situación personal, estoy trabajando a tiempo completo y no dispuse de mucho tiempo para este proyecto, además del tiempo perdido tras la recopilación de datos en la página de la Fórmula 1.
 
-Realizar un análisis exploratorio de los datos (EDA) para identificar patrones y tendencias.
+\subsection{Sprint 3: Preparación de los datos (1 semanas)}
+Para llevar a cabo la preparación de los datos se realizaron los siguientes pasos
+\begin{itemize}
+    \item 
+    Preprocesar los datos para poder ser utilizados en la construcción del modelo.
+    El objetivo de este paso fue preparar los datos descargados, entre esta preparación entra mapear los cambios de nombre de las escuderías para que no se tome a una escudería como dos diferentes, cambiar la nacionalidad de los pilotos por su país de procedencia y que coincida con el país de procedencia del equipo y dónde se encuentra el circuito entre otras cosas.
+    \item
+    Creación de nuevos datos a partir de los ya presentes,.
+    Este paso trató de crear nuevas características para los entrenamientos o testeo de los modelos. Se crearón las siguientes nuevas características: fiabilidad de los coches, consistencia del piloto, edad del piloto, ganador de la carrera, ganador de la \textit{pole}, y se generó la clasifición del mundial de pilotos y equipos de cada año.
+    \item 
+    Limpieza de los datos.
+    El objetivo de esta tarea fue limpiar los datos existentes, esto requiere eliminar o transformar los datos nulos. En este punto se decidió eliminar los datos nulos para que no afecten al entrenamiento.
+    
+\end{itemize}
+Este sprint se llevo a cabo en el tiempo esperado, una semana.
 
-Preprocesar los datos para poder ser utilizados en la construcción del modelo.
 
-\subsection{Sprint 3: Selección del modelo (2 semanas)}
+\subsection{Sprint 4: Selección de características y codificación de los datos (1 semanas)}
+Este sprint se dividió en dos tareas:
+\begin{itemize}
+\item 
+    Codificación de los datos.
+    Inicialmente se buscó codificar los datos, para ello se utilizaron varios algoritmos de codificación como One-Hot o codificación ordinal dependiendo del tipo de cada uno. Los datos que ya eran numéricos no se modificaron. Además, las fechas se codificaron en segundos en función de la fecha mínima de dicha características.
+    \item 
+    Selección de características.
+    Esta tarea trató de generar dos selecciones, una manual y otra con un algoritmo de selección. Para ello se buscaron algoritmos y se decantó por el algoritmo Recursive Feature Elimination (RFE). Cómo tenemos tres variables objetivo se crearon cuatro conjuntos de datos, uno manual, y tres más diferentes según la variable objetivo.
+\end{itemize}
+La duración del sprint se estimó en una semana y se cumplió lo esperado.
 
-Investigar y seleccionar los algoritmos de aprendizaje automático adecuados para el problema de predicción.
 
-Evaluar y comparar los modelos candidatos utilizando validación cruzada.
-Estudiar el tema e investigar los algoritmos utilizados en esta materia.
 
-\subsection{Sprint 4: Ajuste del modelo (3 semanas)}
-
-Ajustar los hiperparámetros del modelo seleccionado.
-
-Optimizar el rendimiento del modelo mediante técnicas como la regularización y la selección de características.
-
-Realizar pruebas de validación cruzada y ajustar el modelo si es necesario.
-
-\subsection{Sprint 5: Evaluación del modelo (2 semanas)}
-Evaluar el rendimiento del modelo en datos de prueba.
-
-Utilizar técnicas de validación de modelo para asegurar que el modelo no está sobreajustando a los datos de entrenamiento.
-
-Documentar el rendimiento del modelo y presentar los resultados.
-
-\subsection{Sprint 6: Implementación y despliegue en una aplicación de interacción (2 semanas)}
-
-Diseñar la arquitectura de la aplicación.
-
-Configurar el entorno de desarrollo para la aplicación.
-
-Desarrollar la lógica de la aplicación para la interacción con el modelo.
-Desarrollar la interfaz de usuario de la aplicación.
-
-Realizar pruebas exhaustivas de la aplicación y asegurarse de que funciona correctamente con datos de prueba y producción.
-
-Recopilar comentarios de los usuarios y realizar mejoras en la interfaz de usuario.
-
-Corregir cualquier error que se haya encontrado durante la implementación y despliegue de la aplicación.
-
-\section{Estudio de viabilidad}
-
-\subsection{Viabilidad económica}
-
-\subsection{Viabilidad legal}
 
 

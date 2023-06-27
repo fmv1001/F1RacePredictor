@@ -6,42 +6,40 @@ Esta sección tiene como objetivo recopilar las facetas más fascinantes de la e
 
 Desde mi infancia he tenido la suerte de poder interactuar con el apasionante mundo del deporte y más en concreto de la Fórmula 1. Puedo recordar claramente haber visto carreras en la televisión con mi familia y maravillarme con la velocidad, la habilidad y la emoción que caracterizan a este deporte de élite. También, esa época coincidió con el éxito de nuestro representante en este deporte, Fernando Alonso. Viví sus dos mejores años, 2005 y 2006. Jamás olvidaré sus luchas con Michael Schumacher, considerado uno de los mejores pilotos de la historia sino el mejor.
 
-Con el tiempo minterés por la Fórmula 1 se hizo más fuerte. Comencé por investigar a los pilotos más laureados y a los equipos míticos que han dejado una larga huella en la historia de este deporte como pueden ser Ferrari o McLaren. Más adelante continué por interesarme en la evolución de los monoplazas como resultado de los avances tecnológicos y viendo como cada vez se volvían más rápidos, precisos y efectivos.
+Con el tiempo mi terés por la Fórmula 1 se hizo más fuerte. Comencé por investigar a los pilotos más laureados y a los equipos míticos que han dejado una larga huella en la historia de este deporte como pueden ser Ferrari o McLaren. Más adelante continué por interesarme en la evolución de los monoplazas como resultado de los avances tecnológicos y viendo como cada vez se volvían más rápidos, precisos y efectivos.
 
-Es por todo esto que decidí realizar mi Trabajo de Fin de Máster sobre este increíble deporte que es la Fórmula 1. Además, en este deporte es extremadamente importante el uso de modelos predictivos, tanto para predecir el ritmo del coche y el de sus rivales, como para controlar el desgaste de los neumáticos o la potencial pérdida de tiempo en boxes durante una carrera.
-
-
+Es por todo esto que decidí realizar mi Trabajo de Fin de Máster sobre este increíble deporte que es la Fórmula 1. Además, en él es extremadamente importante el uso de modelos predictivos, tanto para predecir el ritmo del coche y el de sus rivales, como para controlar el desgaste de los neumáticos o la potencial pérdida de tiempo en boxes durante una carrera.
 
 \section{Comienzo del proyecto}
 
-Una vez escogido el tema, tocaba planificar el desarrollo del proyecto. Para ello decidí llevar acabo una planificación por sprints. Comenzando por la compresión del problema y la recolección de datos, siguiendo por la creación de ajuste de los modelos, y acabando por la creación de una aplicación para la interacción con los mismos.
+Una vez escogido el tema, tocaba planificar el desarrollo del proyecto. Para ello decidí llevar acabo una planificación por sprints. Comenzando por la compresión del problema y la recolección de datos, siguiendo por la creación, entrenamiento y ajuste de los modelos, y acabando por el desarrollo de una aplicación para la interacción con los mismos.
 
-Para llevar a cabo este proyecto decidí escoger GitHub como herramienta de control de versiones y Zenhub cómo herramienta de desarrollo ágil. Es aquí dónde encontré mi primer problema en este propósito. Zenhub dispone de un programa de estudiantes que permite utilizar su herramienta de forma gratuita, y así empecé planificando el primer sprint y las primeras tareas. Fue en la preparación del segundo sprint dónde tuve el problema, ese programa gratuito se saturó, por lo que lo inhabilitaron, quedando mi cuenta fuera del mismo. Todo esto hizo que se me complicara la gestión de tareas del proyecto.
+Para llevar a cabo este proyecto decidí escoger GitHub como herramienta de control de versiones, ya que es uno de los requisitos de este proyecto, además de estar ampliamente familiarizado con su tecnología, y Zenhub cómo herramienta de desarrollo ágil, la cual ya he usado con anterioridad. Es aquí dónde encontré mi primer problema en este propósito. Zenhub dispone de un programa de estudiantes que permite utilizar su herramienta de forma gratuita, y así empecé planificando el primer sprint y las primeras tareas. Fue en la preparación del segundo sprint dónde tuve el problema, ese programa gratuito se saturó, por lo que lo inhabilitaron, quedando mi cuenta fuera del mismo. Todo esto hizo que se me complicara la gestión de tareas del proyecto.
 
 \section{Recolección de datos}
 
-Para la recolección de datos inicialmente pasé por contactar con varias páginas web que contienen gran cantidad de información sobre la Fórmula 1. Contacte con 4 de las páginas más relevantes de este deporte: \href{https://www.statsf1.com/}{\textit{statsf1}}, \href{https://www.racing-reference.info/}{\textit{racing-reference}}, \href{https://www.f1-fansite.com/}{\textit{f1-fansite}}, y \href{https://www.motorsportstats.com/}{\textit{motorsportstats}}. Incluso contacté con la página oficial de la \href{https://www.formula1.com/}{\textit{Fórmula 1}}. Algunas de las páginas no me contestaron y otras simplemente me dijeron que no sería posible cederme datos, que no es la política de empresa. 
+Para la recolección de datos inicialmente pasé por contactar con varias páginas web que albergan gran cantidad de información sobre la Fórmula 1. Contacté con 4 de las páginas más relevantes de este deporte: \href{https://www.statsf1.com/}{\textit{statsf1}}, \href{https://www.racing-reference.info/}{\textit{racing-reference}}, \href{https://www.f1-fansite.com/}{\textit{f1-fansite}}, y \href{https://www.motorsportstats.com/}{\textit{motorsportstats}}. Incluso contacté con la página oficial de la \href{https://www.formula1.com/}{\textit{Fórmula 1}}. Algunas de las páginas no me contestaron y otras simplemente me respondieron que no sería posible cederme datos, que no es la política de empresa. 
 
-Visto que no fue posible obtener los datos de alguna empresa, tocaba recopilarlos yo mismo. Para ello disponemos de una API llamada \href{https://ergast.com/mrd/}{\textit{Ergast Developer API}}. 
+Tras ver que no fue posible obtener los datos de alguna empresa, tomé la inevitable decisión de recopilarlos yo mismo. Para ello existe de una API llamada \href{https://ergast.com/mrd/}{\textit{Ergast Developer API}}. 
 
 El término \textit{API} (Application Programming Interface o Interfaz de programación de aplicaciones) se refiere a un conjunto de pautas y protocolos que nos permiten la comunicación entre varios componentes de software. Es una interfaz que especifica cómo podemos hacer uso e interactuar con las funcionalidades de un sistema, biblioteca, framework o servicio. 
 
 En el caso de Ergast Developer API es un servicio web experimental que proporciona un registro histórico de datos de carreras de coches para fines no comerciales\cite{eargast:API}. Este servicio nos proporciona datos del deporte de la Fórmula 1, desde el inicio del campeonato en 1950 hasta el día de hoy.
 
-Una vez ya tenemos la fuente se comienza la recopilación de datos en varias fases:
+Después de conocer la fuente inicié la recopilación de datos, realizado en varias fases:
 \begin{enumerate}
-    \item Inicialmente se obtuvieron los datos de todos los pilotos, constructores o equipos y circuitos de la Fórmula 1. Para obtener datos de los circuitos quise obtener la altitud en cuanto a la posición geográfica, ya que afecta notablemente al rendimiento del motor. Para ello me creé una cuenta en la herramienta para desarrolladores de Google, la Google Cloud Platform (GCP). La GCP es una plataforma de servicios de computación en la nube de Google. Se creó para ayudar a las empresas y desarrolladores a crear, implementar y administrar sus aplicaciones y servicios en la nube. Además, nos ofrece una amplia gama de servicios y herramientas. Más concretamente nos proporciona una API llamada \textit{Maps Elevation API}, la cual nos proporciona a partir de un punto de latitud y longitud, la elevación del terreno entre otros datos. A partir de la información que nos da Ergast (latitud y longitud) he obtenido la altitud geográfica de los circuitos.
+    \item Inicialmente se obtuvieron los datos de todos los pilotos, constructores o equipos y circuitos de la Fórmula 1. Para obtener datos de los circuitos quise obtener la altitud en cuanto a la posición geográfica, ya que afecta notablemente al rendimiento del motor. Para ello me creé una cuenta en la herramienta para desarrolladores de Google, la Google Cloud Platform (GCP). La GCP es una plataforma de servicios de computación en la nube de Google. Se creó para ayudar a las empresas y desarrolladores a crear, implementar y administrar sus aplicaciones y servicios en la nube. Además, nos ofrece una amplia gama de servicios y herramientas. Más concretamente nos proporciona una API llamada \textit{Maps Elevation API}, la cual nos permite a partir de un punto de latitud y longitud, la elevación del terreno entre otros datos. A partir de la información que nos da Ergast (latitud y longitud) he obtenido la altitud geográfica de los circuitos.
  
-    \item Más adelante se obtuvieron todos los datos de los resultados de todas las carreras y las clasificaciones. En este momento nos surge otro problema, de las clasificaciones sólo obtenemos datos desde el año 2003. Intentaremos sacar los datos de la página oficial de la Fórmula 1 con técnicas de \textit{webscrapping}. En este momento tuve que crear varios diccionario para poder asociar a qué circuito y piloto corresponden dichos datos, ya que no tienen el mismo nombre exacto en la página de la Formúla 1 que en la API de Ergast. Pero al recopilar y hacer el cruce de todos los datos nos damos cuenta que no están todos. Faltan la mayor parte de los datos de clasificación y sólo disponemos de parte de los datos de posición de salida. Por ello usaremos únicamente la información obtenida en la API de Ergast, la cual dispone de los datos de posición de salida para todas las carreras.
+    \item Más adelante se obtuvieron todos los datos de los resultados de las carreras y las clasificaciones. En este momento nos surge otro problema, sólo obtenemos datos desde el año 2003 de las clasificaciones. Decidí sacar los datos de la página oficial de la Fórmula 1 con técnicas de \textit{webscrapping}. A continuación tuve que crear varios diccionarios para poder asociar a qué circuito y piloto corresponden dichos datos, ya que no cuentan el mismo nombre exacto en la página de la Formúla 1 que en la API de Ergast. Pero al recopilar y hacer el cruce de todos los datos me encontré con que no están todos. Faltan la mayor parte de los datos de clasificación y sólo disponemos de parte de los datos de posición de salida. Por ello usaremos únicamente la información obtenida en la API de Ergast, la cual dispone de los datos de posición de salida para todas las carreras.
 
-    \item En tercer y último lugar lugar quise añadir el dato del tiempo meteorológico de las carreras, es un factor muy influyente en las carreras. Cuando una carrera es bajo lluvia la influencia del rendimiento del coche baja considerablemente y el desempeño del piloto es de mayor importancia. Es por ello que es un factor muy relevante en las carreras y por lo tanto debe tenerse en cuenta.
-    Estos datos no se encuentran en ninguna de las webs de las carreras mencionadas anteriormente y en la API de Ergast tampoco. Inicialmente consideré a través de la posición geográfica de los circuitos y de la fecha de realización de las carreras, consultar en algún API de empresas o servivios de meteorología. Tras hacer varias pruebas con la API archive-api.open-meteo.com y la API de wunderground (api.weather.com), no se pudo determinar el tiempo exacto durante la carrera ya que podría haber llovido ese día pero no durante la realización del gran premio. 
-    Tras unos días pensando cómo sacar ese dato, encontré que en wikipedia se muestra cierta información sobre la temperatura del asfalto y sobre si ha llovido o no. Es por esto que mediante técnicas de \textit{webscrapping} y la librería \textit{BeautifulSoup}, creando un diccionario que detecta si hay palabras que indiquen que ha llovido, se ha establecido si llovió (\textit{wet}) o no (\textit{dry}) durante el gran premio.
+    \item En tercer y último lugar lugar quise añadir el dato del tiempo meteorológico de las carreras, que es un factor muy influyente en las carreras. Cuando una carrera es bajo lluvia la influencia del rendimiento del coche baja considerablemente y el desempeño del piloto es de mayor importancia. Es por ello que es un factor muy relevante en las carreras y por lo tanto debe tenerse en cuenta.
+    Estos datos no se encuentran en ninguna de las webs de las carreras mencionadas anteriormente y en la API de Ergast tampoco. En un primer lugar consideré a través de la posición geográfica de los circuitos y de la fecha de realización de las carreras, consultar en alguna API de empresas o servicios de meteorología. Tras hacer varias pruebas con la API archive-api.open-meteo.com y la API de wunderground (api.weather.com), no se pudo determinar el tiempo exacto durante la carrera ya que podría haber llovido ese día pero no durante la realización del gran premio. 
+    Después de unos días reflexionando sobre cómo abordar este problema, encontré que en wikipedia se muestra cierta información sobre la temperatura del asfalto y sobre si llovió o no. Es por esto que mediante técnicas de \textit{webscrapping} y la librería \textit{BeautifulSoup}, creando un diccionario que detecta si hay palabras que indiquen que ha llovido, se ha establecido si llovió (representado con el valor \textit{wet}) o no (\textit{dry}) durante el gran premio.
 \end{enumerate}
 
 \section{Preparación y limpieza de datos}
 
-Una vez ya tenía todos los datos en mi posesión es hora de prepararlos y limpiarlos para el modelo. 
+Tras la recopilación de los datos se procedió a prepararlos y limpiarlos para el modelo. 
 
 \subsection{Fase 1, estados}
 
@@ -64,7 +62,7 @@ Brakes & Problemas en los frenos del vehículo \\
 Clutch & Problemas en el embrague del vehículo \\
 }
 
-Como hay demasiados estados finales, voy a clasificarlos en tres estados para simplificarlo. Podemos verlos en la tabla \ref{tabla:estadossimplesfinalcarrerasf1}. 
+Había demasiados estados finales, por lo que los reduje a tres estados para simplificarlo. Podemos verlos en la tabla \ref{tabla:estadossimplesfinalcarrerasf1}. 
 
 \tablaSmall{Estados de finalización simplificados.}{l c}{estadossimplesfinalcarrerasf1}
 { \multicolumn{1}{l}{Estados} & Representación del estado \\}{ 
@@ -75,15 +73,15 @@ Engine failure & No terminó por problemas en el motor del vehículo \\
 }
 
 \subsection{Datos del piloto, circuitos y constructores}
-Más adelante crucé el \textit{dataset} con los datos del piloto, de los circuitos y de los equipos los cuales había obtenido con anterioridad. Aquí se contemplan datos como por ejemplo la nacionalidad del piloto, el país donde se ubica el circuito o la nacionalidad del equipo. 
-A la hora de obtener la nacionalidad y el país del equipo o circuito, me di cuenta que para el modelo sería interesante que ese dato fuera igual en los tres casos. Es por esto que modifiqué la nacionalidad de los pilotos para que aparezca en forma país y no de nacionalidad. 
-Por otra parte, como amante del deporte que soy, he tenido en cuenta que por temas de patrocinios muchos equipos cambian constantemente de nombre durante su historia, y es muy imperante que se tenga esto en cuenta para que los datos de un mismo equipo no se traten de forma separada. Para ello se ha buscado información sobre la historia de todos los constructores, la cual podemos ver la siguiente imagen \ref{fig:constructor_history_min}.
+Más adelante crucé el \textit{dataset} con los datos del piloto, de los circuitos y de los equipos, los cuales había obtenido con anterioridad. Aquí se contemplan datos como por ejemplo la nacionalidad del piloto, el país donde se ubica el circuito o la nacionalidad del equipo. 
+A la hora de obtener la nacionalidad y el país del equipo o circuito, observé que para el modelo sería interesante que ese dato fuera igual en los tres casos. Es por ello que modifiqué la nacionalidad de los pilotos para que aparezca en forma país y no de nacionalidad. 
+Por otra parte, como amante del deporte que soy, tuve en cuenta que por temas de patrocinios muchos equipos cambian constantemente de nombre durante su historia, y es muy imperante que se tenga esto en cuenta para que los datos de un mismo equipo no se traten de forma separada. Con el fin de unificar los nombres del mismo equipo, busqué información sobre la historia de todos los constructores, la cual podemos ver la siguiente imagen \ref{fig:constructor_history_min}, para modificar este dato.
 
 \imagen{constructor_history_min}{Extracto de los cambios de nombre en la historia de algunas de las escuderías\cite{reddit:f1teamhistory}.}{1}
 
-Además, utilicé la fecha de realización del gran premio y la fecha de nacimiento del piloto para calcular la edad del piloto durante la carrera. Esto es importante, ya que con el tiempo los pilotos están más experimentados, por lo cual son más rápidos y cometen menos errores.
+Además, utilicé la fecha de realización del gran premio y la fecha de nacimiento del piloto para calcular la edad del piloto durante la carrera. Esto es importante, ya que con el tiempo los pilotos están más experimentados, por lo cual son más rápidos y cometen menos errores como podemos ver en la figura \ref{fig:errorespilotoedad}.
 
-\imagen{grafico}{grafico}{1}
+\imagen{errorespilotoedad}{Promedio de errores de los pilotos según la edad}{.8}
 
 Por último se obtuvieron las puntuaciones de cada año del campeando tanto en constructores como en pilotos. Estos datos se pueden obtener directamente de la API de Eargast. Pero cómo la puntuación en función del resultado en carrera ha sido modificado con el tiempo, se va a proceder a adjudicar los puntos en función de la posición final de cada carrera con el sistema de puntuación actual. En este sistema sólo puntúan los 10 primeros pilotos, tal como podemos ver en la tabla \ref{tabla:puntuacioncarrerasf1}.
     \tablaSmall{Puntuación de cada piloto en función de la posición final de carrera.}{l c}{puntuacioncarrerasf1}
@@ -101,15 +99,21 @@ Por último se obtuvieron las puntuaciones de cada año del campeando tanto en c
     } Esto se utilizará más adelante para comprobar el error de los modelos.
 
 \subsection{Fase 3, Ganadores, \textit{polemans}, fiabilidad de coches y consistencia de pilotos}
-Con los datos de las posiciones de salida obtendremos los \textit{polemans}. La \textit{pole} es para el piloto que consigue hacer la vuelta más rápida en clasificación y por ello sale en primer lugar en la carrera. El \textit{poleman} es el piloto que consigue la \textit{pole}. Es interesante conocer este dato porque en muchos circuitos en los cuales es muy difícil adelantar y salir por delante es de gran importancia. Además, vamos a obtener el ganador del gran premio a través de las posiciones de salida, para más adelante poder predecir este dato.
+Con los datos de las posiciones de salida obtendremos los \textit{polemans}. La \textit{pole} es para el piloto que consigue hacer la vuelta más rápida en clasificación y por ello sale en primer lugar en la carrera. El \textit{poleman} es el piloto que consigue la \textit{pole}. Es interesante conocer este dato porque en muchos circuitos en los cuales es muy difícil adelantar y salir por delante es de gran importancia como vemos en el gráfico de la figura \ref{fig:winnerpole}, el 40\% de las victorias es saliendo desde la primera posición.
 
-\imagen{grafico}{grafico}{1}
+\imagen{winnerpole}{Porcentaje de victorias cuando el piloto sale en la primera posición.}{.6}
+
+Y si comparamos las victorias saliendo desde la tercera posición o mejor el dato es aún más relevante (figura \ref{fig:winneron3grid}), un 80\%.
+
+\imagen{winneron3grid}{Porcentaje de victorias cuando el piloto sale en las tres primeras posiciones.}{.8}
+
+Además, vamos a obtener el ganador del gran premio a través de las posiciones de salida, para más adelante poder predecir este dato.
 
 De igual modo es importante conocer la fiabilidad de los coches y la consistencia de los pilotos. En este caso usaremos la información de finalización de carrera (tabla \ref{tabla:estadossimplesfinalcarrerasf1}), en función del total de carreras. Para la consistencia del piloto se usará el estado \textit{driver mistake} y para la fiabilidad de los coches los estados \textit{mechanical failure} y \textit{engine failure}.
 
 \subsection{Limpieza de datos}
 
-En este momento en el que ya tenemos todos los datos a utilizar debemos comprobar si hay algún dato que sea nulo, ya que los valores nulos afectarán negativamente a la eficiencia de los modelos. 
+Más adelante se procedió con la limpieza de datos, ya que debemos comprobar si hay algún dato que sea nulo, ya que los valores nulos afectarán negativamente a la eficiencia de los modelos. 
 Al comprobar los datos inexistentes, se eliminará la siguiente información: 
 
 \begin{itemize}
@@ -119,8 +123,126 @@ Al comprobar los datos inexistentes, se eliminará la siguiente información:
 \end{itemize} 
 
 Datos descargados que se eliminaran porque no aportan ninguna información sobre las carreras: 
-    \begin{enumerate}
-    	\item Urls tanto de pilotos como de circuitos, carreras, o constructores.
-    	\item Nombres y/o apellidos de pilotos y constructores, ya que contamos con el id o alias de cada uno de ellos.
+    \begin{itemize}
+        \item Urls tanto de pilotos como de circuitos, carreras, o constructores.
+        \item Nombres y/o apellidos de pilotos y constructores, ya que contamos con el id o alias de cada uno de ellos.
         \item Nacionalidad de piloto o equipo, y nombre de la localidad del circuito. Como ya hemos convertido la nacionalidad a nombre del país, ya no es necesario conocer dicha información.
-    \end{enumerate}
+    \end{itemize}
+
+
+\section{Selección de características y codificación de los datos}
+
+En este punto se deben escoger las características que son más importantes para el entrenamiento del modelo. Para lograr esto, contrastaremos el uso de un algoritmo de selección de características frente a la selección manual de los rasgos que, en mi opinión, son más cruciales según mis muchos años de experiencia siguiendo este deporte. 
+
+\subsection{Codificación de los datos}
+
+Es necesario tener los datos codificados para realizar la selección automática de características, ya que los modelos trabajan con datos numéricos.
+
+En el aprendizaje automático existen dos grandes codificadores de características en función del tipo de variable. 
+\begin{enumerate} 
+    \item Para variables categóricas con diferentes categorías se suele utilizar la codificación \textit{One-Hot}, en la cual se crea una columna binaria para cada categoría.
+    \item En variables con un orden jerárquico se usan codificaciones ordinales, las cuales asignan a cada valor diferente de la variable un valor numérico normalmente ascendente o descendente.
+\end{enumerate}
+
+Para nuestros datos se han escogido las siguientes codificaciones para cada uno de las variables:
+
+\begin{itemize}
+    \item Año, posición final en carrera, posición de salida, ronda o serie, vueltas terminadas en carrera, puntos obtenidos tras la carrera, latitud o longitud de la posición geográfica del circuito, altitud del circuito respecto del nivel del mar, edad del piloto, consistencia del piloto y fiabilidad del coche: estos datos ya son numéricos así que no es necesario codificarlos.
+    \item Fecha del gran premio: para este dato hemos pasado la fecha a segundos con la referencia de la fecha mas antigua.
+    \item Id de circuito, piloto y equipo: para esta variable se ha usado la codificación ordinal para asignar a cada piloto, circuito y equipo un número diferente de cada variable.
+    \item Estados de finalización de carrera (estado final y estado simple final): para los estados se ha escogido también una codificación ordinal, asignando un número a cada variable.
+    \item Clima: como tenemos dos tipos de climas se ha decidido codificarlos utilizar el método \textit{One-Hot}, por lo que pasamos a tener dos variables en vez de una. Cada variable indica si llovió o no durante la carrera.
+    \item Fecha de nacimiento del piloto: para este dato hemos utilizado el mismo criterio que con la fecha del gran premio, hemos pasado ese día a segundos con la referencia de la fecha mas antigua de nacimiento.
+    \item País de procedencia de piloto, equipo y circuito: se ha considerado que este dato debía ser codificado con \textit{One-Hot} debido a que el algoritmo debe poder detectar cuando un piloto o equipo corre en el gran premio de su país de procedencia de una mejor forma.
+    \item Ganador del gran premio: no se ha codificado ya que ya es un dato numérico que representa un 1 si el piloto queda en primer lugar tras la carrera o un 0 si no.
+    \item \textit{Poleman} del gran premio: de igual modo que el ganador del gran premio no se ha necesitado codificar.
+\end{itemize}
+
+\subsection{Selección de características manual}
+
+En primer lugar hice la selección manual. Gracias a este enfoque logro tener un mayor control sobre qué características se incluyen o excluyen en el modelo final, lo que me brinda la oportunidad de aplicar mi conocimiento y experiencia en este campo. 
+Estas son las características elegidas:
+
+\begin{itemize}
+    \item Año: el año es importante ya que tenemos que conocer este dato para distinguir entre carreras de un año y otro.
+    \item Id de circuito, piloto y equipo: valores necesarios para diferenciar entre pilotos y equipos en cada circuito.
+    \item Posición de salida del piloto: esta variable es de suma importancia en circuitos de complejidad de adelantamiento.
+    \item Posición final del piloto en carrera: este dato es una de las variables objetivo del proyecto.
+    \item Clima en carrera: uno de los valores más importantes en mi opinión, en mojado los rendimiento de los coches no son demasiado importantes y cobra mayor relevancia la destreza del piloto.
+    \item País de procedencia de piloto, equipo y circuito: los pilotos de carreras suelen tener mayor motivación cuando corren en casa, al igual que cuando corren en el país de procedencia del equipo.
+    \item Altitud sobre el nivel del mar donde se encuentra el circuito: los motores de los coches de Fórmula 1 se ven afectados por este dato, esto es por la cantidad de oxigeno en el aire. A mayor altitud menor concentración de oxígeno y mayor exigencia para los motores, ya que son motores de combustión y el oxígeno es de vital importancia en la explosión del combustible.
+    \item Edad del piloto durante el gran premio: la edad es importante, ya que cuando un piloto es joven es menos experimentado y suele arriesgar más y por tanto comete más errores. Pero también cuando los pilotos son muy mayores suelen perder reflejos y algunos pierden la motivación para correr. Esto lo pudimos ver anteriormente en la figura \ref{fig:errorespilotoedad}.
+    \item Ganador de la carrera: variable objetivo del proyecto.
+    \item Poleman de la carrera: variable objetivo del proyecto.
+    \item Consistencia del piloto: esta variable nos indica la consistencia del piloto a la hora de cometer errores, esto es importante porque cuantos más errores cometen más fácil es que no acaben la carrera.
+    \item Fiabilidad del coche: es muy importante conocer este dato, en caso de un coche con poca fiabilidad es posible que el coche sufra un fallo en carrera y abandone. Podemos recordar la época de Fernando Alonso en McLaren con el motor honda entre los años 2015 y 2018 con la fiabilidad de los coches ese año, ilustrado en la figura \ref{fig:fiabilidadcar2015-2018}. En dos de cada 10 carreras fallaban los dos coches abandonando por fiabilidad. Podemos decir sin lugar a dudas que fue el peor coche en cuanto a fiabilidad de esa época.
+    \imagen{fiabilidadcar2015-2018}{Fiabilidad de los coches entre 2015 y 2018}{1}
+\end{itemize} 
+
+\subsection{Selección de características automática}
+
+Para esta tarea contemplamos dos métodos muy efectivos, la eliminación recursiva o \textit{Recursive Feature Elimination} y la eliminación hacia atrás o \textit{Backward Elimination}.
+
+La técnica de eliminación hacia atrás comienza con todas las características y elimina una a una en cada iteración. Entonces, en cada iteración de esta técnica se entrena y evalúa un modelo con las variables disponibles. La característica menos significativa es la eliminada, tomando como criterio el peso de la misma en esa iteración. Esto se repite hasta llegar al criterio de parada.
+
+Elgoritmo RFE o \textit{Recursive Feature Elimination}, realmente es un tipo de eliminación hacia atrás, pero tiene la ventaja de ser compatible con varios algoritmos de aprendizaje automático, lo que lo convierte en una herramienta flexible y adaptable. Se puede combinar con algoritmos de regresión, clasificación u otras estrategias de modelado, brindándonos la flexibilidad de manejar varios problemas y conjuntos de datos. Además, proporciona una medida de importancia o relevancia para cada característica en función de cómo contribuye al modelo final. Dado que nos permite identificar los rasgos que tienen mayor influencia en la toma de decisiones del modelo, será particularmente útil para nuestro propósito.
+
+Este algoritmo se ha combinado con varios modelos para hacer una selección más óptima. Estos modelos son: \textit{Decision Tree Regressor} y \textit{Linear Regression}. Los dos son modelos de regresión ya que queremos una elección lineal de características. Por un lado los árboles de decisión son modelos muy versátiles que nos van a permitir capturar las relaciones no lineales y podremos detectar interacciones entre las diferentes características. Y por otra parte el algoritmo de regresión lineal tiene la ventaja de ser más interpretable y computacionalmente más eficiente.
+
+Tras la ejecución del algoritmo nos han quedado las siguientes características:
+
+race\_final\_position...
+\begin{enumerate}
+    \item Fiabilidad del coche
+    \item Consistencia del piloto
+    \item Puntos del piloto en carrera
+    \item País del piloto, equipo y circuito
+    \item Estado final del piloto en carrera
+    \item Vueltas finalizadas
+    \item Clima mojado y clima seco
+    \item Ganador
+    \item Posición de salida
+    \item Estado final
+    \item Altitud del circuito sobre el nivel del mar
+    \item Año
+    \item Posición geográfica en latitud y longitud
+    \item Serie
+\end{enumerate}
+
+race\_winner...
+\begin{enumerate}
+    \item Consistencia del piloto
+    \item Piloto en \textit{pole}
+    \item Fiabilidad del coche
+    \item Puntos del piloto en carrera
+    \item Estado final
+    \item Posición geográfica en latitud y longitud
+    \item Edad del piloto durante el gran premio
+    \item País del piloto, equipo y circuito
+    \item Altitud del circuito sobre el nivel del mar
+    \item Clima seco
+    \item Fecha de la carrera
+    \item Clima mojado
+    \item Fecha de nacimiento del piloto
+    \item Posición final del piloto en carrera
+    \item Posición de salida
+\end{enumerate}
+
+qualy\_pole...
+ \begin{enumerate}
+    \item Ganador
+    \item Consistencia del piloto
+    \item Fiabilidad del coche
+    \item País del piloto, equipo y circuito
+    \item Posición de salida
+    \item Estado final
+    \item Posición geográfica en latitud
+    \item Puntos del piloto en carrera
+    \item Posición final del piloto en carrera
+    \item Posición geográfica en longitud
+    \item Clima seco
+    \item Vueltas finalizadas
+    \item Clima mojado
+    \item Edad del piloto durante el gran premio
+    \item Altitud del circuito sobre el nivel del mar
+\end{enumerate}
