@@ -2,39 +2,82 @@
 
 \section{Introducción}
 
-Una muestra de cómo podría ser una tabla de casos de uso:
+Una descripción detallada del comportamiento del sistema a desarrollar es lo que se pretende lograr con la Especificación de requisitos de software (ERS). Además de delinear los requisitos del sistema, también enumera las necesidades del producto (tanto para el usuario como para el cliente).
+Cubre todos los casos posibles que un usuario final puede realizar con el software.
 
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & Alumno \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
-\end{table}
+Este documento sirve de medio de comunicación entre todas las partes (desarrolladores, clientes y usuarios finales).
+
+Según el estándar IEEE-STD-830-1998 \cite{ieee830} una ERS debe presentar las siguientes características:
+
+\begin{itemize}
+    \item \textbf{Correcto}: es correcto si, y sólo si, el software satisface todos los requisitos especificados.
+    \item \textbf{Consistente}: debe ser coherente con los requerimientos de la ERS, así como con los documentos de distinto nivel.
+    \item \textbf{Inequívoco}: es inequívoco si, y sólo si, solo hay una interpretación de cada requisito establecido.
+    \item \textbf{Completo}: para ello debe incluir: 
+        \begin{itemize}
+            \item Requisitos relacionados a desarrollo, funcionalidad, restricciones de diseño, atributos e interfaces externas.
+            \item Definiciones de respuestas de software a todos los datos de entrada y a todas las circunstancias posibles.
+            \item Tener las etiquetas llenas y bien referencias. 
+        \end{itemize}
+    \item \textbf{Delinear que tiene estabilidad y/o importancia}: La importancia y/o estabilidad de cada requisito debe describirse en una ERS. Cada requisito es poseedor de un identificador único que indica su estabilidad o importancia.
+    \item \textbf{Comprobable}: cada requisito declarado debe ser verificable. Si existe una forma concreta de verificar que el producto de software cumple con el requisito, entonces ese requisito es verificable.
+    \item \textbf{Modificable}: si su estructura y estilo permiten que los cambios en los requisitos se realicen de manera rápida, completa y consistente mientras se conserva la estructura y estilo.
+    \item \textbf{Identificable}: una ERS es identificable si la fuente de los requisitos es obvia y facilita la referencia en un posible desarrollo posterior o la documentación del mismo.
+\end{itemize}
 
 \section{Objetivos generales}
 
-\section{Catalogo de requisitos}
+Se pretende cumplir los objetivos siguientes:
 
-\section{Especificación de requisitos}
+\begin{itemize}
+\tightlist
+\item
+  Desarrollar un modelo para la predicción de resultados en las carreras de Fórmula 1.
+\item
+  Comparar una selección mediante algoritmos contra una selección manual.
+\item
+  Ajustar un modelo para mejorar sus predicciones.
+\item
+  Desarrollar una aplicación para  la interacción con el modelo final.
+\end{itemize}
+
+
+\section{Catálogo de requisitos}
+
+En esta sección se presentan los requisitos del sistema tanto funcionales como no funcionales.
+
+\subsection{Requisitos funcionales}
+
+\begin{itemize}
+    \item \textbf{RF-1 Gestión del modelo entrenado:} 
+        El sistema debe de ser capaz de realizar predicciones.
+        \begin{itemize}
+            \item \textbf{RF-1.1 Predicciones de resultados:}
+                El modelo debe poder predecir los resultados.
+                \begin{itemize}
+                    \item \textbf{RF-1.1.1 Predicciones de resultados de pilotos:}
+                        El modelo debe poder predecir los resultados de los pilotos en una carrera determinada.
+                    \item \textbf{RF-1.1.2 Predicciones del ganador:}
+                        El modelo debe ser capaz de predecir si un piloto ganará o no una carrera.
+                    \item \textbf{RF-1.1.3 Predicciones del poleman:}
+                        El modelo debe ser capaz de predecir si un piloto hará o no la pole.
+				\end{itemize}
+        \end{itemize}
+    \item \textbf{RF-2 Gestión de la Interfaz de usuario:}
+        La interfaz de usuario debe ser capaz de realizar las funciones necesarias para interactuar con el modelo de forma simple y fácil para el usuario.
+        \begin{itemize}
+            \item \textbf{RF-2.1 Predicciones de resultados:}
+                La aplicación debe poder predecir los resultados.
+                \begin{itemize}
+                    \item \textbf{RF-2.1.1 Predicciones de resultados de pilotos:}
+                        La aplicación debe poder predecir los resultados de los pilotos en una carrera determinada.
+                    \item \textbf{RF-2.1.2 Predicciones del ganador:}
+                        La aplicación debe ser capaz de predecir si un piloto ganará o no una carrera.
+                    \item \textbf{RF-2.1.3 Predicciones del poleman:}
+                        La aplicación debe ser capaz de predecir si un piloto hará o no la pole.
+				\end{itemize}
+        \end{itemize}
+\end{itemize}
+    
 
 
