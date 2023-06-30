@@ -96,7 +96,7 @@ Por último se obtuvieron las puntuaciones de cada año del campeando tanto en c
         8° & 4\\
         9° & 2\\
         10° & 1\\
-    } Esto se utilizará más adelante para comprobar el error de los modelos.
+    }
 
 \subsection{Fase 3, Ganadores, \textit{polemans}, fiabilidad de coches y consistencia de pilotos}
 Con los datos de las posiciones de salida obtendremos los \textit{polemans}. La \textit{pole} es para el piloto que consigue hacer la vuelta más rápida en clasificación y por ello sale en primer lugar en la carrera. El \textit{poleman} es el piloto que consigue la \textit{pole}. Es interesante conocer este dato porque en muchos circuitos en los cuales es muy difícil adelantar y salir por delante es de gran importancia como vemos en el gráfico de la figura \ref{fig:winnerpole}, el 40\% de las victorias es saliendo desde la primera posición.
@@ -113,7 +113,7 @@ De igual modo es importante conocer la fiabilidad de los coches y la consistenci
 
 \subsection{Limpieza de datos}
 
-Más adelante se procedió con la limpieza de datos, ya que debemos comprobar si hay algún dato que sea nulo, ya que los valores nulos afectarán negativamente a la eficiencia de los modelos. 
+Más adelante se procedió con la limpieza de datos, ya que debemos comprobar si hay algún dato que sea nulo, ya que los valores nulos afectarán negativamente a la eficiencia de los modelos \cite{art:impactmissdata}. 
 Al comprobar los datos inexistentes, se eliminará la siguiente información: 
 
 \begin{itemize}
@@ -189,60 +189,95 @@ Elgoritmo RFE o \textit{Recursive Feature Elimination}, realmente es un tipo de 
 
 Este algoritmo se ha combinado con varios modelos para hacer una selección más óptima. Estos modelos son: \textit{Decision Tree Regressor} y \textit{Linear Regression}. Los dos son modelos de regresión ya que queremos una elección lineal de características. Por un lado los árboles de decisión son modelos muy versátiles que nos van a permitir capturar las relaciones no lineales y podremos detectar interacciones entre las diferentes características. Y por otra parte el algoritmo de regresión lineal tiene la ventaja de ser más interpretable y computacionalmente más eficiente.
 
-Tras la ejecución del algoritmo nos han quedado las siguientes características:
+Tras la ejecución del algoritmo se han eliminado las siguientes características:
 
-race\_final\_position...
+Para el modelo con variable objetivo resultado de pilotos en carrera
 \begin{enumerate}
-    \item Fiabilidad del coche
-    \item Consistencia del piloto
-    \item Puntos del piloto en carrera
-    \item País del piloto, equipo y circuito
-    \item Estado final del piloto en carrera
-    \item Vueltas finalizadas
-    \item Clima mojado y clima seco
-    \item Ganador
-    \item Posición de salida
-    \item Estado final
-    \item Altitud del circuito sobre el nivel del mar
-    \item Año
-    \item Posición geográfica en latitud y longitud
-    \item Serie
+    \item Nacionalidades de constructores de Hong Kong, Nueva Zelanda, Sudáfrica, México, Rusia.
+    \item Posición geográfica en latitud y longitud.
+    \item Fecha de carrera.
 \end{enumerate}
 
-race\_winner...
-\begin{enumerate}
-    \item Consistencia del piloto
-    \item Piloto en \textit{pole}
-    \item Fiabilidad del coche
-    \item Puntos del piloto en carrera
-    \item Estado final
-    \item Posición geográfica en latitud y longitud
-    \item Edad del piloto durante el gran premio
-    \item País del piloto, equipo y circuito
-    \item Altitud del circuito sobre el nivel del mar
-    \item Clima seco
-    \item Fecha de la carrera
-    \item Clima mojado
-    \item Fecha de nacimiento del piloto
-    \item Posición final del piloto en carrera
-    \item Posición de salida
-\end{enumerate}
-
-qualy\_pole...
+Modelo con variable objetivo poleman de la clasificación
  \begin{enumerate}
-    \item Ganador
-    \item Consistencia del piloto
-    \item Fiabilidad del coche
-    \item País del piloto, equipo y circuito
-    \item Posición de salida
-    \item Estado final
-    \item Posición geográfica en latitud
-    \item Puntos del piloto en carrera
-    \item Posición final del piloto en carrera
-    \item Posición geográfica en longitud
-    \item Clima seco
-    \item Vueltas finalizadas
-    \item Clima mojado
-    \item Edad del piloto durante el gran premio
-    \item Altitud del circuito sobre el nivel del mar
+    \item Nacionalidades de pilotos de Venezuela y Zimbabwe.
+    \item Posición geográfica en latitud y longitud.
+    \item Fecha del gran premio.
+    \item Ronda o serie.
+    \item Año.
+    \item Fecha nacimiento.
 \end{enumerate}
+
+Para el modelo con variable objetivo ganador de la carrera.
+ \begin{enumerate}
+    \item Edad del piloto.
+    \item Posición geográfica en latitud y longitud.
+    \item Fecha del gran premio.
+    \item Ronda o serie.
+    \item Año.
+    \item Fecha nacimiento.
+\end{enumerate}
+
+
+\section{Entrenamiento}
+Para llevar a cabo el entrenamiento se ha escogido la librería \href{https://scikit-learn.org/stable/}{\textit{scikit-learn}}, la cual cuenta con una gran cantidad de algoritmos y modelos de aprendizaje automático.
+
+Se ha decidido hacer una división del 80\% para entrenamiento de datos y un 20\% para evaluación, para darle al modelo muchos ejemplos permitiendo descubrir y comprender patrones subyacentes en los datos. Como resultado, el modelo puede volverse más preciso y general. Además, reservar ese 20\% final de los datos para la evaluación le permite evaluar el rendimiento en datos a los que no estuvo expuesto durante el entrenamiento. Esto le da una indicación concreta de qué tan bien puede extrapolar a partir de nuevos datos y hacer predicciones. 
+Inicialmente se pensó en la función \texttt{train\_test\_split} de \textit{scikit-learn} para llevar a cabo esta división. La cual nos permite dividir matrices o listas en subconjuntos aleatorios de entrenamiento y prueba \cite{sklearn:traintestsplit}.
+
+Finalmente se utilizará la validación cruzada para encontrar la mejor división de datos posible, manteniendo el 20\% de datos de prueba. La validación cruzada o cross-validation es una técnica que consiste en dividir el conjunto de datos en subconjuntos de entrenamiento y prueba, y evaluar cada subconjunto para encontrar el más óptimo. Para ello se utiliza la librería \textit{scikit-learn} y su algoirtmo KFold, el cual realiza divisiones del conjunto de datos en K partes iguales, utilizando K - 1 partes para el entrenamiento y la parte restante para validación en cada  una de las iteraciones. Asignando a K el valor de 5 para obtener ese porcentaje del 80\% de entrenamiento frente al 20\% de prueba. Con esto se logra maximizar la utilización de datos, gracias a permitir el uso de todo el conjunto tanto para entrenamiento como para validación.
+
+\subsection{Modelos del entrenamiento}
+Para el cálculo de las posiciones de carrera, se van a utilizar los siguientes modelos de regresión: Linear Regression, Decision Tree Regressor, Random Forest Regressor y Support Vector Regression (SVR).
+
+\begin{itemize}
+    \item Linear Regression: este modelo tiene como objetivo crear una relación lineal entre la variable objetivo y las demás variables. Se aplica a problemas de regresión donde el objetivo es predecir valores numéricos. Además este modelo es sumamente eficiente en cuanto computación.
+    \item Decision Tree Regressor: es un modelo que se basa en árboles de decisión. Crea una estructura de árbol tratando de que las ramas representen posibles respuestas a las preguntas que forman los nodos con respecto a las características. Cada hoja del árbol recibe un valor de salida tras la división recursiva en subconjuntos del conjunto inicial de datos. Se aplica en problemas que requieran identificar relaciones no lineales.
+    \item Random Forest Regressor: el propósito del modelo es hacer predicciones a través de la combinación de varios árboles de decisión. El resultado final se obtienen promediando las predicciones de cada uno de los arboles, los cuales se han entrenado con una muestra aleatoria diferente a las demás. Además, cuenta con la ventaja de reducir el sobreajuste y aumentar la eficiencia. Es aplicado a problemas con características de alta dimensión y puede gestionar un gran volumen de datos.
+    \item Support Vector Regression: modelo que predice utilizando vectores de soporte. Los puntos de los vectores de soporte se encuentran en el borde del límite de decisión o en la zona que afectará en mayor medida cómo se define la función de regresión. El modelo controla una tolerancia de error, buscando una función de regresión que se ajuste mejor a los datos y reduzca la discrepancia entre la predicción y el valor real. Cuando nuestros datos contienen características no lineales o incluso con valores atípicos, este modelo es sumamente útil en problemas de regresión.
+\end{itemize}
+
+Y para el cálculo del \textit{poleman} y ganador, problemas de clasificación, se usará: Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Support Vector Classification (SVC), KNeighbors Classifier, Gaussian NB.
+
+\begin{itemize}
+    \item Logistic Regression: es utilizado para resolver problemas donde las variables objetivo son binarias o representan categorías. Se usa una función logística para calcular la probabilidad con la que una instancia dada pertenezca a una clase en particular. Se sustenta en la relación lineal encontrada entre características y variable objetivo. Además, convierte el resultado en una probabilidad gracias a una función de activación. Utilizado sobre todo para problemas de clasificación binaria, pero se puede expandir a problemas con variables objetivo categóricas.
+    \item Decision Tree Classifier: funciona igual que el Decision Tree Regressor pero con la particularidad de que en este cada hoja del árbol recibe una etiqueta de clase tras la división recursiva del conjunto de datos y no un valor.
+    \item Random Forest Classifier: al igual que en la regresión, realiza las predicciones a través de la combinación de varios árboles de decisión. El resultado se obtiene promediando la clasificación total de los árboles.
+    \item Support Vector Classification: los vectores utilizados en este modelo se usan para dividir instancias en clases. La diferencia con el SVR es que ahora buscamos el mejor hiper plano en el cual haya la mayor distancia de mayor entre clases. Permite el uso de datos tanto linealmente separables como no separables gracias a funciones kernel. Gran elección en problemas de clasificación de variables categóricas o binarias.
+    \item KNeighbors Classifier: usa el algoritmo K-Nearest Neighbors. Asigna etiquetas de los k vecinos cercanos a las instancias. Se vale de la noción de que las instancias parecidas pertenecen a la misma clase con frecuencia. Es muy eficiente y sencillo para problemas de clasificación siempre y cuando la elección del número de k vecinos no sea demasiado alta.
+    \item Gaussian NB (Naive Bayes): este modelo se basa en el teorema de Bayes, además de asumir que los datos forman una distribución gaussiana. Utiliza la regla de Bayes para determinar la probabilidad de pertenecer a una clase en particular. Se asume la independencia entre características, algo ingenuo, de ahí su nombre. Para problemas de clasificación con variables continuas y distribuidas en forma normal es muy eficiente.
+\end{itemize}
+
+\subsection{Comparación de las soluciones y evaluación de los diferentes modelos utilizados}
+
+Vamos a comparar los algoritmo en función de la variable a predecir y el tipo de selección utilizado. La evaluación se ha llevado a cabo con la métrica R2 score, la cual cuenta con valores en el intervalo (-$\infty$,1], que implican las siguientes opciones:
+\begin{itemize}
+    \item Número negativo: el modelo es peor que predecir con la media del valor.
+    \item 0: el modelo es igual que predecir con la media del valor.
+    \item Número positivo en el intervalo (0,1): el modelo es mejor que predecir con la media del valor.
+    \item 1: Ajuste perfecto, todas las predicciones coinciden con la realidad.
+\end{itemize}
+
+\subsubsection{Variable objetivo: posición final del carrera}
+En la figura \ref{fig:model_race_pos} podemos apreciar que tanto el algoritmo RFE  como la selección manual consiguen una similar puntuación. También se observa que tanto el modelo SVR como el Decision Tree Regressor obtienen una puntuación demasiado baja, esto se puede deber a que el conjunto datos no tiene muchas relaciones lineales. Sin embargo, el modelo Random Forest Regressor nos da valores más aceptables. Esto se puede deber a que uno de sus puntos fuertes es trabajar con problemas que tienen un conjunto de datos muy grande y de alta dimensión, como es nuestro caso.
+
+\imagen{model_race_pos}{Eficiencia de los modelos para predecir la posición final del carrera.}{.8}
+
+Sin embargo, en la imagen \ref{fig:model_race_pos_t} podemos apreciar que el conjunto de datos elegido mendicante el uso del algoritmo RFE reduce en hasta un 50\% de media los tiempos de ejecución. Además, podemos concluir que a pesar de que el modelo SVR tarde casi 80 veces más en entrenarse que el Random Forest Regressor no alcanza ni un cuarto de su eficiencia.
+
+\imagen{model_race_pos_t}{Tiempos de ejecución de los algoritmos para predecir la posición final del carrera.}{.8}
+
+\subsubsection{Variable objetivo: ganador de la carrera}
+En este caso la variable a predecir es binaria. La eficiencia de los algoritmos para este problema es sustancialmente mayor que en el caso anterior. Hemos conseguido una eficiencia cercana al 100\%, algo muy útil para predecir en las carreras. El único modelo que no logra tal eficiencia es el modelo de Gaussian Naive Bayes, el cual no logra ni alcanzar el 40\% de los aciertos. Pero en este caso no se nota demasiado el uso de una selección u otra.
+\imagen{model_race_winner}{Eficiencia de los modelos para predecir el ganador de la carrera.}{.8}
+
+Los tiempos de ejecución (figura \ref{fig:model_race_winner_t}) marcan el mismo patrón que en el caso anterior, el algoritmo RFE es un 50\% más rápido (exceptuando el modelo de árboles de decisión y el de regresión logística), lo que supone una gran ventaja de computación. Además, podemos ver que estos algoritmos son muy rápidos, apenas tardan unos segundos en ejecutarse.
+
+\imagen{model_race_winner_t}{Tiempos de ejecución de los algoritmos para predecir el ganador de la carrera.}{.8}
+
+\subsubsection{Variable objetivo: ganador de la \textit{pole}}
+Como en el caso anterior hemos conseguido un muy alto porcentaje de acierto gracias a los algoritmos de clasificación, excepto con el modelo de Gaussian Naive Bayes.
+\imagen{model_pole_winner}{Eficiencia de los modelos para predecir el ganador de la \textit{pole}.}{.8}
+
+También es importante ver cómo los tiempos de ejecución son muy bajos y se observa el patrón de mejores tiempos para el entrenamiento con selección utilizando el RFE (de igual modo a excepción del modelo de árboles de decisión y del de regresión logística).
+\imagen{model_pole_winner_t}{Tiempos de ejecución de los algoritmos para predecir el ganador de la \textit{pole}.}{.8}
