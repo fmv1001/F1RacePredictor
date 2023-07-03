@@ -281,3 +281,87 @@ Como en el caso anterior hemos conseguido un muy alto porcentaje de acierto grac
 
 También es importante ver cómo los tiempos de ejecución son muy bajos y se observa el patrón de mejores tiempos para el entrenamiento con selección utilizando el RFE (de igual modo a excepción del modelo de árboles de decisión y del de regresión logística).
 \imagen{model_pole_winner_t}{Tiempos de ejecución de los algoritmos para predecir el ganador de la \textit{pole}.}{.8}
+
+
+\section{Optimización del modelo}
+Tal como hemos observado en la imagen \ref{fig:model_race_pos} el algoritmo Random Forest Regressor ha conseguido la mayor de las puntuaciones, y el Decision Tree Regressor la peor puntuación, y por ello vamos a escoger estos dos modelos con el conjunto de datos seleccionado por el algoritmo RFE para el ajuste (ya que es más eficiente computacialmente hablando). No se han escogido los problemas de clasificación porque ya eran bastante precisos y veremos una mayor mejora en las demás opciones. 
+
+\subsection{Random Forest Regressor}
+Para la optimización de este modelo se ha creado un diccionario que contiene los parámetros más importantes para el ajuste del modelo y se han generado todas las combinaciones posibles para obtener el conjunto de hiper parámetros que mayor eficiencia sea capaz de conseguir. En este caso el modelo con los parámetros iniciales suele ser bastante bueno, veamos si es posible ajustarlo más para mejorar la solución.
+
+Los hiperparámetros que se van a combinar en sus diferentes posibilidades son \cite{sklearn:randomforestregressor}:
+\begin{itemize}
+    \item \texttt{\textit{bootstrap}}: indica si se usan muestras bootstrap para construir los árboles. Si no se usa todo el conjunto. Si le indicamos que sí, que es como lo vamos a hacer, tenemos otros parámetros a elegir:
+        \begin{itemize}
+            \item \texttt{\textit{max\_samples}}: elige el número de muestras a extraer de X para entrenar cada estimador base. Generando con la función \textit{linspace} de la librería \textit{numpy}, la cual nos permite generar x números entre un número inicial y un final, una lista como la siguiente: \textit{[500, 1000, 1500, 2000]}.
+            \item \texttt{\textit{oob\_score}}: nos permite indicar si utilizaremos muestras fuera de la bolsa para estimar la puntuación de generalización. Se pondrá en \textit{true}.
+            \item \texttt{\textit{random\_state}}: sirve para controlar la aleatoriedad de las muestras bootstrap utilizadas al construir los árboles, además del muestreo de las características a considerar al buscar la mejor división en cada nodo (si el número máximo de características escogido es menor que el número de características totales). Utilizaremos los siguientes valores: 5, 10 y 15.
+        \end{itemize}
+    \item \texttt{\textit{max\_depth}}: profundidad máxima del árbol. Usaremos los valores:  5, 16, 27, 38, 50.
+    \item \texttt{\textit{n\_estimators}}: número de árboles. Se ha generado esta lista de valores a probar: 500, 1000, 1500 y 2000.
+    \item \texttt{\textit{criterion}}: función utilizada para determinar la calidad de cada división. Tenemos 4 opciones:
+        \begin{itemize}
+            \item \texttt{squared\_error} utiliza el error cuadrático medio para minimizar la pérdida de L2 mediante el uso de la media de cada nodo terminal.
+            \item \texttt{friedman\_mse} usa el error cuadrático medio con la puntuación de mejora de \textit{Friedman} para escoger las posibles divisiones.
+            \item \texttt{absolute\_error} mediante el error absoluto medio  minimiza la pérdida L1 gracial al uso de la mediana de cada nodo terminal. El problema es que esta función es significativamente más lenta que \texttt{"squared\_error"}, y por ello es la única que no se probará.
+            \item \texttt{poisson} divide los datos gracias a la reducción de la desviación de Poisson. 
+        \end{itemize}
+    \item \texttt{\textit{max\_features}}: número máximo de características s considerar en la búsque de la mejor división. Crearemos una lista con 10 números del tipo \textit{float}, desde 0.1 hasta 1. Si le pasamos un número decimal entre 0 y 1 multiplicará este por el número total de características que tenemos, 109, obteniendo así el número que se utilizará en el parámetro. Hemos generado con \textit{linspace} la siguiente lista: \textit{[0.1, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6, 0.7000000000000001, 0.8, 0.9, 1.0]}. Además podemos indicarle dos funciones para este parámetro: \textit{sqrt} para que el valor del parámetro sea la raíz cuadrada del total de carcterísticas y \textit{log2} para el logartimo en base dos.
+    \item \texttt{\textit{warm\_start}}: indica si se reutilizan o no las soluciones de anteriores para añadir y ajustar más estimadores al conjunto. Si es falso, se usa un bosque completamente nuevo. Probaremos indicando que se use y que no se use por separado.
+    \item \texttt{\textit{ccp\_alpha}}: este parámetro define la complejidad de costes mínima para la poda, es decir, se elige el subárbol que cuente con la mayor complejidad de costes que sea menor que el valor indicado. Se comprobarán valores entre 0 y 0.1.
+    \item\texttt{\textit{min\_samples\_split}}: número mínimo de muestras para hacer la división de los nodos internos. Probando con 2, 5 y 10.
+    \item \texttt{\textit{min\_samples\_leaf}}: número mínimo de muestras para estar en un nodo hoja. Se probarán los siguientes valores: 1, 2 y 4.
+    \item \texttt{\textit{verbose}}: este valor controlará la verbosidad al ajustar y predecir los datos. Utilizaremos los siguientes valores: 0, 2 y 5.
+    \item \texttt{\textit{n\_jobs}}: número de trabajos en paralelo durante el entrenamiento. Se establecerá en -1 para que se escoja el número máximo de procesadores disponibles.
+\end{itemize}
+Para hacer las pruebas con todas las combinaciones se usará la librería \textit{itertools} con su función \textit{product},la cual nos permite a partir de varias listas de valores generar una lista con todas las combinaciones posibles, que son 2808.
+Tras 5 horas de ejecución y la gran cantidad de parámetros y combinaciones utilizadas, no se ha conseguido mejorar la puntuación de los valores por defecto, ya que este algoritmo es bastante bueno en esa configuración.
+
+\subsection{Decision Tree Regressor}
+En este caso es más probable que consigamos una mejora, pero ¿seremos capaces de generar una solución mejor que para el caso anterior?
+Para ello los hiperparámetros que se van a combinar en sus diferentes posibilidades son \cite{sklearn:decisiontreeregressor}:
+\begin{itemize}
+    \item \texttt{\textit{max\_depth}}: profundidad máxima del árbol. Vamos a utilizar la función \textit{linspace} de la librería \textit{numpy}. Le hemos dado 5 y 50 como rango y obtenemos las siguientes: 5, 16, 27, 38, 50.
+    \item \texttt{\textit{criterion}}: función utilizada para determinar la calidad de cada división. Tenemos 4 opciones:
+        \begin{itemize}
+            \item \texttt{squared\_error} utiliza el error cuadrático medio para minimizar la pérdida de L2 mediante el uso de la media de cada nodo terminal.
+            \item \texttt{friedman\_mse} usa el error cuadrático medio con la puntuación de mejora de \textit{Friedman} para escoger las posibles divisiones.
+            \item \texttt{absolute\_error} mediante el error absoluto medio  minimiza la pérdida L1 gracias al uso de la mediana de cada nodo terminal. El problema es que esta función es significativamente más lenta que \texttt{"squared\_error"}, por ello va a ser la única en no utilizarse.
+            \item \texttt{poisson} divide los datos gracias a la reducción de la desviación de Poisson. 
+        \end{itemize}
+    \item \texttt{\textit{max\_features}}: número máximo de características a considerar en la búsqueda de la mejor división. Usaremos la misma lista escogida en el caso anterior.
+    Además podemos indicarle dos funciones para este parámetro: \textit{sqrt} para que el númeor máximo de carcterísticas sea la raíz cuadrada del total y \textit{log2} para usar el logaritmo en base dos.
+    \item \texttt{\textit{splitter}}: estrategia que se usa para la división de los nodos del árbol. Tenemos dos opciones disponibles:
+        \begin{itemize}
+            \item \texttt{best}: escoge la mejor división.
+            \item \texttt{random}: elige una división aleatoria.
+        \end{itemize}
+    \item \texttt{\textit{ccp\_alpha}}: este parámetro define la complejidad de costes mínima para la poda, es decir, se elige el subárbol que cuente con la mayor complejidad de costes que sea menor que el valor indicado. Se utilizará el valor por defecto \textit{0.0} ya que queremos la mayor complejidad.
+    \item\texttt{\textit{min\_samples\_split}}: número mínimo de muestras para hacer la división de los nodos internos. Los valores probados son: 2, 5 y 10.
+    \item \texttt{\textit{min\_samples\_leaf}}: número mínimo de muestras para estar en un nodo hoja. Se probarán los siguientes valores: 1, 2 y 4.
+\end{itemize}
+Se han conseguido probar 3510 combinaciones de parámetros generadas como en el caso anterior con la función \textit{product} de la librería \textit{itertools}. Este modelo es sustancialmente más rápido y hemos logrado ejecutar todas las posibilidades en cuestión de 15 minutos.
+
+\subsection{Comparación de valores}
+En la figura \ref{fig:hiperparams} podemos apreciar los valores conseguidos sin ajuste, con ajuste y con el conjunto de datos escogido a mano.
+
+Se observa que en el modelo Decision Tree Regressor se ha conseguido gracias a ajustar los hiperparámetros obtener un acierto del 45\% respecto del modelo por defecto. Sin embargo con el modelo Random Forest Regressor hemos logrado únicamente 5.5\% más de rendimiento. El ajuste de hiperparámetros por defecto en este modelo es una solución bastante buena, pero se puede ajustar para ganar algo más de rendimiento. En cuanto al modelo de árboles de decisión hemos tenido que ajustarlo para poder exprimir su máximo rendimiento, algo que queda lejos de la solución con los parámetros por defecto.
+
+\imagen{hiperparams}{Valores anteriores y valores conseguidos con el ajuste de los hiperparámetros.}{.8}
+
+\section{Aplicación para interacción}
+
+Tras haber realizado los entrenamientos y ajustes, llegamos a la parte final del proyecto, el desarrollo de la aplicación que nos va a permitir hacer predicciones. Comenzaremos con la arquitectura, más adelante se diseñará la interfaz de usuario y por último la lógica e implementación del modelo.
+
+\subsection{Arquitectura de la aplicación}
+
+En esta fase tenía que diseñar la interfaz de usuario para la aplicación y toda la lógica que conlleva, pero antes debía escoger el entorno en el que desarrollarla.
+
+\subsection{Entorno de desarrollo}
+En este momento tuve que decidir que entorno escoger para el desarrollo de la aplicación. Contaba con diferentes opciones:
+\begin{enumerate}
+    \item Desarrollar una aplicación WinForms de .NET que es la tecnología con la que actualmente trabajo y estoy muy familiarizado con ella. Acabé descartando esta opción porque al ser una aplicación no demasiado compleja, esta tecnología requiere mayor esfuerzo. Además sólo se podría lanzar en Windows y no quería limitar al usuario final. 
+    \item Hacer una aplicación para Android y que pudiera ejecutarse en cualquier móvil. También descarte esta opción porque de nuevo requería mayor esfuerzo de la complejidad de la propia app. Aunque pudiera ejecutarse sólo en un móvil Android, hoy en día la mayor parte de la gente cuenta con uno.
+    \item Python: al haber utilizado este mismo entorno y lenguaje para hacer el modelo, eliminaría la complejidad de unir dos sistemas diferentes. Escogí esta opción ya que además de minimizar esfuerzos me permitía desarrollar una aplicación de una forma más simple y para cualquier dispositivo que ejecutara python, el mismo lenguaje con el que he construido el modelo. 
+\end{enumerate}
+

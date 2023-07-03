@@ -2,10 +2,82 @@
 
 \section{Introducción}
 
+Este anexo detalla los datos que maneja el sistema, la arquitectura y su diseño procedimental para explicar cómo se han cumplido los requisitos y objetivos del proyecto.
+
 \section{Diseño de datos}
+
+En esta sección, se describe cómo se han recopilado, procesado y estructurado los datos relacionados con las carreras de Fórmula 1.
+
+\subsection{Recopilación}
+
+La mayor parte de los datos están recopilados de una API llamada \href{https://ergast.com/mrd/}{\textit{Ergast Developer API}}, que es un servicio web experimental que proporciona un registro histórico de datos de carreras de coches para fines no comerciales. Se han obtenido de la API los siguientes datos: pilotos, circuitos, equipos y resultados de las carreras. Para ello se han ejecutado y obtenido los siguientes archivos:
+\begin{enumerate}
+    \item Pilotos: debemos ejecutar el archivo \texttt{1\_GetDrivers} para obtener los datos de los pilotos. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Drivers.csv}.
+    \item Circuitos: debemos ejecutar el archivo \texttt{2\_GetCircuits} para obtener los datos de los circuitos. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Circuits.csv}.
+    \item Equipos: debemos ejecutar el archivo \texttt{3\_GetConstructors} para obtener los datos de los equipos. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Constructors.csv}.
+    \item Resultados de las carreras: debemos ejecutar el archivo \texttt{4\_GetResults} para obtener los datos de las carreras. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Results.csv}.
+    \item Clasificaciones: también se pueden obtener datos de las clasificaciones de esta API, peor como no se han usuado no se han guardado, En caso de necesitarlo se debe ejecutar el archivo \texttt{6\_GetQualyDataErgast}. Una vez ejecutados se guardarían el la capeta \textit{code/data} con el nombre \texttt{qualifying.csv}.
+\end{enumerate}
+
+Además, se han obtenido datos del clima de las carreras de la página de la wikipedia a través de webscrapping, para ello ejecutaremos el archivo \texttt{5\_GetWeatherData} para obtener los datos meteorológicos. Una vez ejecutado se añade en los datos de los resultados y se guardan el la capeta \textit{code/data} con el nombre \texttt{final\_results.csv}.
+
+\subsection{Procesado}
+
+Para procesar los datos se ha seguido la siguiente estrategia:
+
+\begin{enumerate}
+    \item Combinación de los datos: se han combinado los datos de los archivos: \texttt{Drivers.csv}, \texttt{Circuits.csv}, \texttt{Constructors.csv} y \texttt{Results.csv}. 
+    \item Preparación de los datos: a partir de los datos combinados se han creado datos de finalización de carrera, consistencia de pilotos, fiabilidad de los coches, país de procedencia de equipos y pilotos, edad de los pilotos durante las carreras, ganadores y polemans, además de corregir algunos datos como pueden ser los cambios de nombre del mismo equipo en determinados años. Todo ello ejecutando los archivos \texttt{7\_A\_PrepareAndMergeData} y \texttt{7\_B\_DriverConstructorData}, y guardado en el archivo \texttt{merged\_data.csv} en la carpeta \textit{code/data}.
+    \item Limpieza de datos: a partir de los datos obtenidos en \texttt{merged\_data.csv} se han eliminado las características que contenían datos nulos a través del archivo \texttt{8\_A\_CleanData}, y guardado en el archivo \texttt{all\_data.csv} en la carpeta \textit{code/data}.
+    \item Obtención de las clasificaciones de pilotos y equipos: a partir de los datos obtenidos en \texttt{all\_data.csv} se han generado los archivos \texttt{driver\_standings.csv} y \texttt{constructor\_standings.csv} guardados en la carpeta \textit{code/data}.
+    \item Codificación y selección de los datos: se han codificado los datos para entrenarlos en los modelos a través de los archivos: \texttt{9\_A\_ManualSelection}, \texttt{9\_B\_CodificationManualData}, \texttt{10\_A\_CodificationData}, \texttt{10\_B\_AutoSelection}, y resultando en los siguientes archivos de datos guardados en la carpeta \textit{code/data}:
+        \begin{itemize}
+            \item \texttt{coded\_auto\_selection\_data.csv}: datos codificados para la selección de carcaterísticas con el algoritmo RFE.
+            \item \texttt{coded\_auto\_selection\_data\_race\_winner.csv}: datos con las características ya seleccionadas para la variable objetivo ganador de la carrera.
+            \item \texttt{coded\_auto\_selection\_data\_race\_final\_position.csv}: datos con las características ya seleccionadas para la variable objetivo posiciones finales de carrera.
+            \item \texttt{coded\_auto\_selection\_data\_qualy\_pole.csv}: datos con las características ya seleccionadas para la variable objetivo ganador de la pole.
+            \item \texttt{coded\_manual\_data.csv}: datos seleccionados manualmente.
+            \item \texttt{codificadores.pkl}: se han guardado lo codificadores utilizados para cada característica en la carpeta \textit{code/coders}.
+        \end{itemize}
+    \item Emtrenamiento de los modelos: los modelos han sido entrenados en el archivo \texttt{Training}, el cual ha generado los archivos con las características más relevantes para el ajuste posterior en la carpeta \textit{code/best\_split\_data}. Además, se han guardado los modelos entrenado en la carpeta \textit{code/train\_models}.
+    \item Ajuste de los modelos: encontramos los modelos con ajuste en el archivo \texttt{TrainingParams}, que ha guardado el modelo con mejor ajuste en la carpeta \textit{code/train\_models}.
+\end{enumerate}
+
+\subsection{Aplicación}
+
+Cómo la aplicación es de interacción con el modelo entrenado, no guarda una persistencia de los datos como tal. Contamos con 3 archivos de datos en los que se guardan circuitos constructores y pilotos de la temporada 2023 de Fórmula 1 para hacer las predicciones:
+\begin{itemize}
+    \item Pilotos: \texttt{app\_drivers}.
+    \item Constructores: \texttt{app\_constructors}.
+    \item Circuitos: \texttt{app\_circuits}.
+\end{itemize}
 
 \section{Diseño procedimental}
 
+Podemos entender las operaciones internas del sistema gracias a su diseño procedimental.
+
+La interacción entre los diversos componentes del sistema se representará mediante diagramas de secuencia teniendo en cuenta los requisitos del sistema.
+
+\imagen{seqpredpos}{Diagramas de secuencia relativo al RF-2.1.1.}
+\imagen{seqpredwinner}{Diagramas de secuencia relativo al RF-2.1.2.}
+\imagen{seqpredpole}{Diagramas de secuencia relativo al RF-2.1.3.}
+
 \section{Diseño arquitectónico}
 
+\subsection{Arquitectura del sistema}
+
+La arquitectura modelo-vista-controlador (MVC) es el patrón de diseño que se ha seguido en la aplicación.
+
+\subsubsection{Patrón modelo-vista-controlador (MVC)}
+
+El patrón MVC (figura \ref{fig:mvc}) es un patrón de diseño arquitectónico que divide el sistema en tres componentes: la interfaz de usuario, la lógica de la aplicación y los datos. La capa de datos está representada por el modelo, la interfaz de usuario está representada por la vista y la lógica de la aplicación está representada por el controlador.
+
+\imagen{mvc}{Explicación del patrón MVC.}
+
+En este proyecto se ha utilizado de la siguiente manera:
+\begin{itemize}
+    \item Una primera carpeta de datos (\textit{data}) que contiene los datos necesarios para hacer las predicciones.
+    \item Una carpeta llamada \textit{logic} que contiene la lógica de la aplicación.
+    \item Una última carpeta que implementa la capa de presentación (\textit{presentation}).
+\end{itemize}
 

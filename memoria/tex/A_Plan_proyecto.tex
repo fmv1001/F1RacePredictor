@@ -16,7 +16,7 @@ La planificación se llevo a cabo en 3 fases.
     La planificación del desarrollo del proyecto comienza con la definición de los objetivos del proyecto y los resultados esperados. Además en este punto vamos a dividir el trabajo en tareas mas pequeñas.
     \item
     Establecer los objetivos principales del proyecto.
-    Inicialmente se estableció como objetivo principal del proyecto comparar varios algoritmos para encontrar el más óptimo, pero posteriormente se decidió comparar para diferentes algoritmo su desempeño en función de si la selecciónde datos fue manual o miente un algoritmo, además de desarrollar uno de los modelos para maximizar su desempeño.
+    Inicialmente se estableció como objetivo principal del proyecto comparar varios algoritmos para encontrar el más óptimo, pero posteriormente se decidió comparar para diferentes algoritmo su desempeño en función de si la selección de datos fue manual o miente un algoritmo, además de desarrollar uno de los modelos para maximizar su desempeño.
     \item
     Escoger los entornos de desarrollo, de gestión y de comunicación.
     Como entorno de desarrollo vamos a utilizar Visual Sudio Code por la versatilidad que nos brinda, podremos desarrollar tanto la aplicación como el modelo en esta herramienta.
@@ -89,5 +89,183 @@ Para llevar a cabo este sprint se realizaron dos tareas
     \item Entrenamiento y evaluación
     Esta tarea sirvió para entrenar los modelos iterativamente con cada uno de los datos escogidos y para cada una de las variables objetivo. Además se evalúa cada uno tras su entrenamiento guardando los datos en un diccionario para su posterior visionado.
 \end{itemize}
+
+\subsection{Sprint 6: Ajuste del modelo (3 semanas)}
+Sprint dividido en 2 tareas:
+\begin{itemize}
+    \item 
+    Seleccionar y recopilar los hiperparámetros de los modelos.
+    La función de esta tarea fue escoger que modelos se pretendían ajustar y recopilar sus hiperparámetros más importantes. Se decidió ajustar el modelo Random Forest Regressor y el Decision Tree Regressor de la predicción del resultado de posivión en carrera.
+    \item 
+    Escoger los valores e iterar los entrenamientos.
+    El objetivo fue escoger uno o varios valores para cada parñámetro e iterar su entrenamiento con el fin de lograr el mayor ejuste posible.
+\end{itemize}
+
+
+\section{Estudio de viabilidad}
+
+Se va a separa este estudio en dos, el estudio de viabilidad legal y el estudio de viabilidad económica.
+
+\subsection{Viabilidad económica}
+
+Con el fin de una posible implementación del proyecto en un entorno real, desarrollaremos los costes y beneficios económicos estimados del proyecto en esta sección.
+
+\subsubsection{Costes del proyecto}
+
+Podemos dividir los costos del proyecto en los siguientes apartados: costos de personal, costos de hardware, costos de software, costos generales y beneficios potenciales.
+
+\textbf{Costes personales}
+
+Un ingeniero informático a tiempo completo trabajó en este proyecto durante dos meses. Se considera como el salario mínimo de un ingeniero \cite{salariogob}:
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+\begin{minipage}[b]{0.38\columnwidth}\raggedright\strut
+\textbf{Concepto}\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+\textbf{Coste}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Salario mensual neto\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+1.215,90\euro{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Retención IRPF (24\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+633,01\euro{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Seguridad Social (29,9\%)\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+788,62\euro{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Salario mensual bruto\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+2.637,53\euro{}\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+\textbf{Total 2 meses}\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+5.275,06 \euro{}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Costes de personal.}
+\end{longtable}
+
+Como estamos hablando del estudio de viabilidad económica del proyecto, para la cotización a la Seguridad Social se tienen en cuenta los tipos de cotización de la empresa. Estos valores han sido calculados utilizando los estándares establecidos por el gobierno, que podemos consultar en \cite{salariogob}. Estos son los diferentes formatos de cotización que se han utilizado:.
+
+\begin{itemize}
+\item
+	Un 23,60\% por contingencias comunes.
+\item
+	Un 5,50\% por desempleo de tipo general.
+\item
+	Un 0,20\% para el Fondo de Garantía Salarial o FOGASA.
+\item
+	Y un 0,60\% para formación profesional.
+\item
+	Un total del 29,90\% del salario bruto total.
+\end{itemize}
+
+Para calcular la cotización del IRPF se ha consultado \cite{irpfgob}.\\
+
+\textbf{Costes de hardware}
+
+Hardware que será necesario para el desarrollo de este proyecto:
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+\begin{minipage}[b]{0.38\columnwidth}\raggedright\strut
+\textbf{Hardware}\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+\textbf{Precio}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Teclado y Ratón\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+20\euro{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Ordenador para el desarrollo\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+1000\euro{}\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+\textbf{Total}\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+1020\euro{}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Costes de hardware.}
+\end{longtable}
+
+En el cálculo del precio se han seguido los siguientes criterios:
+
+\begin{itemize}
+    \item Precio del ordenador y periféricos usados en el desempeño de este proyecto.
+\end{itemize}
+
+\textbf{Costes de software}
+
+Software utilizado en el desarrollo del proyecto:
+
+\begin{itemize}
+    \item Python 3.
+    \item Visual Studio Code.
+    \item Git.
+\end{itemize}
+
+Las licencias de software necesarias son de código abierto o gratuitas, y dado que se pueden ejecutar en Linux, un sistema operativo de código abiertos, no hay ningún costo por el software utilizado.
+
+\textbf{Costes de software}
+
+Costes totales del proyecto:
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule
+\begin{minipage}[b]{0.38\columnwidth}\raggedright\strut
+\textbf{Coste}\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+\textbf{Valor}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Coste personal\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+5.275,06\euro{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Coste de hardware\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+1.020\euro{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+Coste software\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+0\euro{}\strut
+\end{minipage}\tabularnewline
+\midrule
+\begin{minipage}[t]{0.38\columnwidth}\raggedright\strut
+\textbf{Total}\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+6.295,06\euro{}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Costes de totales del proyecto.}
+\end{longtable}
+
+\textbf{Beneficios}
+
+En cuanto a los beneficios que podría aportar el desarrollo del proyecto, podríamos vender la solución a un equipo del campeonato para que puedan usarlo, o a una casa de apuestas para establecer los multiplicadores de acierto.
+
 
 
