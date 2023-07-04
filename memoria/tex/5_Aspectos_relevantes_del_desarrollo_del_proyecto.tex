@@ -387,3 +387,26 @@ La disposición vertical de los desplegables no me convencía así que decidí p
 
 \imagen{boceto3_app}{Boceto de la interfaz de usuario con desplegables horizontales y con imagen de fondo.}{.7}
 
+Cuando intenté poner alguna etiqueta para poner los datos del desplegable y algún botón me di cuenta de que con la librería \textit{Tkinter} tenía lagunas limitaciones, por lo que decidí probar con la librería \textit{wxPython}. Con esta otra librería en poco tiempo conseguí poner los desplegables con etiquetas de texto y un cuadro de texto a modo de log para ver que pasos seguía la aplicación mientras trataba los datos antes de la predicción (figura \ref{fig:boceto0_app2}).
+
+\imagen{boceto0_app2}{Boceto de la interfaz de usuario realizado con la librería \textit{wxPython}.}{.7}
+
+Tras añadirle los botones para predecir los resultado, como vemos en la figura \ref{fig:final_app2}, seguía sin convencerme el diseño que podíamos alcanzar con esta librería.
+
+\imagen{final_app2}{Diseño de la interfaz de usuario de la aplicación con WX.}{.7}
+
+\subsection{Funcionalidad de la aplicación}
+
+Para poder interactuar con el modelo se guardaron los modelos con la librería \textit{joblib} en el entrenamiento y cargaron en la app. \textit{Joblib} nos provee de varias funciones, entre ellas \texttt{load} y  \texttt{dumb}. Estas funciones nos permiten guardar y cargar objetos de python en archivos binarios, o lo que es lo mismo una manera muy efectiva de serializar y deserializar objetos de python, algo muy útil para procesamiento de datos y aprendizaje automático \cite{python:joblib}.
+
+Para poder ejecutar las predicciones se obtendrán los datos de la propia API de Ergast y más adelante se codificarán con los mismos codificadores que se han utilizado en la codificación para el entrenamiento, también gracias a las funciones de \textit{joblib} para guardarlos y luego cargarlos en la app. 
+
+Como hemos visto en la arquitectura se han creado 5 archivos para llevar a cabo la lógica:
+\begin{itemize}
+    \item \texttt{AppCircuits}: para obtener los datos de los circuitos de la temporada escogida.
+    \item \texttt{AppConstructors}: para obtener los datos de los equipos de la temporada escogida.
+    \item \texttt{AppDrivers}: para obtener los datos de los pilotos de la temporada escogida.
+    \item \texttt{AppResults}: para obtener los datos de los resultados de la clasificación de la carrera escogida para poder hacer la predicción de la posición de carrera o si ha ganado o no la carrera.
+    \item \texttt{AppCoder}: para combinar y codificar todos los datos obtenidos.
+    \item \texttt{DialogSelectGrid}: para la ventana emergente de elección de posiciones de salida.
+\end{itemize}
