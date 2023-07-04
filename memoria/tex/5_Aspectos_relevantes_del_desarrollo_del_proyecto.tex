@@ -365,3 +365,25 @@ En este momento tuve que decidir que entorno escoger para el desarrollo de la ap
     \item Python: al haber utilizado este mismo entorno y lenguaje para hacer el modelo, eliminaría la complejidad de unir dos sistemas diferentes. Escogí esta opción ya que además de minimizar esfuerzos me permitía desarrollar una aplicación de una forma más simple y para cualquier dispositivo que ejecutara python, el mismo lenguaje con el que he construido el modelo. 
 \end{enumerate}
 
+\subsection{Diseño de la interfaz de usuario de la aplicación}
+Para hacer un primer boceto quise contar ya con la librería que usaría para poder desarrollar la interfaz, y python cuenta con muchas librerías con las que se pueden desarrollar aplicaciones y de todas ellas las más conocidas son:
+\begin{itemize}
+    \item Tkinter: interfaz Tk, interfaz por defecto de Python para el kit de herramientas de GUI Tk \cite{python:tkinter}.
+    
+    \item PyQt: es un conjunto de enlaces de Python para el framework Qt \cite{riverbankcomputing:pyqt}. Nos proporciona una gran cantidad de widgets, y es  muy conocida por su capacidad para crear interfaces muy personalizables y atractivas para el usuario.
+
+    \item PySide: es otro conjunto de enlaces de python para Qt.
+    
+    \item Kivy: es un framework de python de código abierto para desarrollar aplicaciones multiplataforma. Está más enfocado a dispositivos de uso táctil, por lo que queda descartada.
+    
+    \item wxPython: conjunto de herramientas GUI (interfaz gráfica) multiplataforma y de código abierto. Su punto fuerte es su facilidad de uso y capacidad para crear interfaces gráficas robustas y altamente funcionales \cite{wxpython:wxpython}.
+\end{itemize}
+
+Inicialmente escogí \textit{Tkinter} por su simpleza, su curva de aprendizaje es muy corta. Con esta librería realicé el primer boceto, con unos pocos desplegables en formato vertical para seleccionar el piloto y demás datos, el cual podemos ver en la imagen \ref{fig:boceto_app_ini}:
+
+\imagen{boceto_app_ini}{Primer boceto de la interfaz de usaurio.}{.4}
+
+La disposición vertical de los desplegables no me convencía así que decidí ponerlos en horizontal y añadir una imagen de fondo (\ref{fig:boceto3_app}).
+
+\imagen{boceto3_app}{Boceto de la interfaz de usuario con desplegables horizontales y con imagen de fondo.}{.7}
+
