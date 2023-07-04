@@ -395,6 +395,30 @@ Tras añadirle los botones para predecir los resultado, como vemos en la figura 
 
 \imagen{final_app2}{Diseño de la interfaz de usuario de la aplicación con WX.}{.7}
 
+Por último probé con PyQt pese a que tiene una curva de aprendizaje mayor, nos proporciona una gran cantidad de posibilidades. Una vez empecé con esta librería se me ocurrió en vez de usar desplegables, mostrar todos los circuitos con imágenes y que estas sean el propio botón de selección. De ahí salió la primera pestaña funcional, escoger el circuito (figura \ref{fig:escogercircuito}).
+
+\imagen{escogercircuito}{Diseño de la pantalla dónde escogemos el circuito.}{.7}
+
+Después se debe escoger el cima en carrera, lo cual decidí utilizar los neumáticos para escoger clima seco o mojado, visto en la imagen \ref{fig:escogerclima}.
+
+\imagen{escogerclima}{Diseño de la pantalla dónde escogemos el clima.}{.7}
+
+Por último entramos en la pestaña dónde podemos hacer las predicciones, contamos con 3 botones para predecir y uno para ir al inicio. En la imagen \ref{fig:pred_pos} podemos ver una predicción de los resultados del GP de mónaco. Para rpedecir el ganador o poleman se verá como ilustra la figura: 
+
+\imagen{pred_pos}{Diseño de la pantalla dónde hacemos predicciones de el resultado total.}{.7}
+
+\imagen{pred_win}{Diseño de la pantalla dónde hacemos predicciones del ganador.}{.7}
+
+En el caso de que el circuito escogido aún no haya concluido la clasificación y no se conozcan las posiciones de salida, debemos escocger una a una las posiciones de salida de los pilotos que deseemos para hacer la predicción. Se muestra esta pestaña para elegir la posición de cada piloto \ref{fig:escogergrid}, las cuales se eliminan una vez seleccionadas para un piloto, como vemos en la figura \ref{fig:escogergrid2}
+
+\imagen{escogergrid}{Diseño de la pantalla dónde escogemos las posiciones de salida del piloto.}{.4}
+
+\imagen{escogergrid2}{Diseño de la pantalla dónde escogemos las posiciones disponibles de salida del piloto.}{.4}
+
+Además se ha diseñado una imagen principal al inicio de la aplicación:
+
+\imagen{home}{Diseño de la pantalla de inicio de la aplicación.}{.7}
+
 \subsection{Funcionalidad de la aplicación}
 
 Para poder interactuar con el modelo se guardaron los modelos con la librería \textit{joblib} en el entrenamiento y cargaron en la app. \textit{Joblib} nos provee de varias funciones, entre ellas \texttt{load} y  \texttt{dumb}. Estas funciones nos permiten guardar y cargar objetos de python en archivos binarios, o lo que es lo mismo una manera muy efectiva de serializar y deserializar objetos de python, algo muy útil para procesamiento de datos y aprendizaje automático \cite{python:joblib}.
@@ -410,3 +434,8 @@ Como hemos visto en la arquitectura se han creado 5 archivos para llevar a cabo 
     \item \texttt{AppCoder}: para combinar y codificar todos los datos obtenidos.
     \item \texttt{DialogSelectGrid}: para la ventana emergente de elección de posiciones de salida.
 \end{itemize}
+
+Primero se seleccionará el circuito que desencadenará la descarga de los datos necesarios. Y más adelante se podrá escoger entre clima seco y mojado. Después ya solo debemos hacer click en la predicción deseada. 
+
+\imagen{pred_pos}{Predicción del resultado total.}{1}
+{.8}
