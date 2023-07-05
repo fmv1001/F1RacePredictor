@@ -2,10 +2,82 @@
 
 \section{Introducción}
 
+En esta sección, repasaremos los requisitos previos para configurar y usar el sistema, así como las instrucciones para realizar esa configuración. También se ha creado un manual de uso. Todo ello centrado en el usuario final.
+
 \section{Requisitos de usuarios}
+
+\begin{itemize}
+\item Dispositivo con sistema operativo Windows, Linux, MacOS o incluso Android, con Python instalado
+\item Es necesario haber descargado los archivos necesarios (carpeta \textit{/app/release}) disponibles desde el \href{https://github.com/fmv1001/F1RacePredictor/tree/main/app/release}{repositorio}.
+\end{itemize}
 
 \section{Instalación}
 
+Para realizar la instalación de la aplicación para poder interactuar con el modelo únicamente es necesario hacer clic en el archivo F1Predictor.exe.
+
 \section{Manual del usuario}
 
+En este manual se explica cómo hacer uso de la aplicación para poder realizar predicciones.
+En este enlace (\href{https://youtu.be/rLXteMbnrWw}{Vídeo manual de usuario}), podremos ver este manual en formato vídeo.
 
+\subsection{Inicio de la aplicación}
+
+Cuando ejecutamos la aplicación lo primero que vamos a ver el la pantalla de inicio (figura \ref{fig:manualapp1})
+
+\imagen{manualapp1}{Pantalla de inicio de la aplicación.}
+
+\subsection{Selección del circuito}
+
+Procederemos dando clic en cualquier parte de la pantalla de inicio (figura \ref{fig:manualapp1}) y se nos muestran todos los circuitos de la temporada, visto en la figura \ref{fig:manualapp2}. Debemos escoger uno de ellos haciendo clic sobre él.
+
+\imagen{manualapp2}{Pantalla para escoger entre todos los circuitos de la temporada.}
+
+\subsection{Elección de clima}
+
+Una vez hayamos escogido el circuito (imagen \ref{fig:manualapp2}), se nos muestran dos neumáticos, uno de seco y otro de lluvia como podemos ver en la figura \ref{fig:manualapp3}. Debemos escoger uno de ellos haciendo clic sobre él.
+
+\imagen{manualapp3}{Pantalla para escoger entre clima seco o mojado.}
+
+\subsection{Predecir resultados}
+
+Con todas las opciones ya marcadas veremos la pantalla de predicciones cómo vemos en la figura \ref{fig:manualapp4} y procedemos a seleccionar la predicción deseada.
+
+\imagen{manualapp4}{Pantalla para escoger entre las opciones de predicción.}
+
+
+\subsubsection{Predecir resultados de carrera}
+
+Si hacemos clic en la predicción de las posiciones de carrera (figura \ref{fig:manualapp4-0-predpos}), se nos mostrará uno a uno las posiciones predichas por el modelo, lo cual podemos apreciar en la imagen \ref{fig:manualapp5}.
+
+\imagen{manualapp4-0-predpos}{Pantalla para escoger la predicción de las posiciones de carrera.}
+
+\imagen{manualapp5}{Posiciones predichas por el modelo.}
+
+\subsubsection{Predecir el ganador de la carrera}
+
+Si hacemos clic en la predicción del ganador de la carrera (figura \ref{fig:manualapp4-0-predwinner}), se nos mostrará el ganador predicho por el modelo, lo cual podemos apreciar en la imagen \ref{fig:manualapp5}.
+
+\imagen{manualapp4-0-predwinner}{Pantalla para escoger la predicción de las posiciones de carrera.}
+
+\imagen{manualapp6}{Ganador predicho por el modelo.}
+
+\subsubsection{Predecir el poleman}
+
+Si hacemos click en la predicción del poleman (figura \ref{fig:manualapp4-0-predpole}), se nos mostrará el poleman predicho por el modelo, lo cual podemos apreciar en la imagen \ref{fig:manualapp7}.
+
+\imagen{manualapp4-0-predpole}{Pantalla para escoger la predicción de las posiciones de carrera.}
+
+\imagen{manualapp7}{Ganador de la pole predicho por el modelo.}
+
+\subsubsection{Predicciones de resultados de carrera o ganador de circuitos en los que no se ha llevado a cabo la clasificación}
+
+Puede darse el caso de que no se haya realizado la clasificación en el momento de hacer la predicción. En estos casos la aplicación nos va a pedir uno a uno la posición de salida del piloto para poder predecir el resultado. Esto puede ser interesante porque podemos ver las diferencias entre salir en una posición u otra. En la figura \ref{fig:manualapp4-1} podemos ver cómo se nos pide la posición de salida del piloto Albon, y más adelante las posiciones disponibles para asignar al piloto Leclerc en la figura \ref{fig:manualapp4-2}. Para asignar la posición, basta con hacer clic en la imagen de la posición que decidamos.
+
+\imagen{manualapp4-1}{Pantalla para escoger la posición de salida del piloto Albon.}
+\imagen{manualapp4-2}{Pantalla para escoger la posición de salida del piloto Leclerc.}
+
+\subsubsection{Volver a inicio}
+
+Para concluir este manual, en el caso de querer hacer una nueva predicción podemos volver al inicio desde el botón oportuno que se nos muestra en la imagen \ref{fig:manualapp4-0-tohome}.
+
+\imagen{manualapp4-0-tohome}{Botón para volver a la pantalla de inicio de la aplicación.}

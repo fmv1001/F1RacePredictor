@@ -14,6 +14,9 @@ He utilizado GitHub para el alojamiento de mi proyecto en el repositorio \href{h
 \subsection{Github aplicación escritorio}
 Esta aplicación nos permite interactuar con repositorios de GitHub a través de una interfaz gráfica muy intuitiva que sustituye el uso de Git mediante comandos. Nos facilita la tarea de gestionar nuestro repositorio, la sincronización de los cambios, la revisión y/o creación de solicitudes de extracción de datos, además de la colaboración con otros usuarios de nuestros o sus proyectos. 
 
+\subsection{Git LFS}
+Git LFS es una herramienta que nos proporciona GitHub para poder alojar en nuestro repositorio archivos de más de 100 MB (como es el caso de uno de los modelos entrenados), estos archivos se guardarán en un repositorio de GitHub LFS y en nuestro repositorio habrá un archivo con un enlace al fichero original.
+
 \section{Herramientas de gestión de proyectos}
 
 \subsection{ZenHub}
@@ -27,6 +30,10 @@ ZenHub me ha permitido gestionar mi proyecto, ayudándome con la planificación 
 Es una metodología ágil, cuya base es la división del trabajo de breves ciclos, los sprints. Se deben llevar a cabo tareas tanto de planificación, como de desarrollo o revisión y retrospectivas en cada uno de los sprints. Los sprints tiene un período de tiempo establecido. Gracias a esta metodología fomentaremos la colaboración, la entrega de resultados de forma incremental, y resulta en una rápida adaptación a los cambios.
 
 \section{Patrones de diseño}
+
+\subsection{Patrón Modelo-Vista-Controlador o MVC}
+
+MVC es un patrón de diseño arquitectónico que diferencia el sistema en tres capas, los datos, la lógica y la interfaz de usuario. En este patrón el modelo está representado en la capa de datos, la vista referencia a la interfaz de usuario y el controlador implica la lógica de la aplicación.
 
 \section{Herramientas de documentación}
 
@@ -55,7 +62,7 @@ Se ha escogido python como lenguaje en el desarrollo del modelo porque es uno de
 \section{Librerías}
 
 \subsection{Pandas}
-Esta librería está enfocada en el análisis de datos en python. Gracias a sus estructuras podemos manipular los datos de forma fácil y eficiente. Sus estructuras más conocidas son los DataFrames y las Series, con las cuale spodemos trabajar con datos tanto tabulares como series temporales. Es una de las librerías más usadas gracias a su gran cantidad de funcionalidad en procesamiento y análisis de datos. Es perfecta para el tratamiento, preparación y limpieza de datos en modelado.
+Esta librería está enfocada en el análisis de datos en python. Gracias a sus estructuras podemos manipular los datos de forma fácil y eficiente. Sus estructuras más conocidas son los DataFrames y las Series, con las cuales podemos trabajar con datos tanto tabulares como series temporales. Es una de las librerías más usadas gracias a su gran cantidad de funcionalidad en procesamiento y análisis de datos. Es perfecta para el tratamiento, preparación y limpieza de datos en modelado.
 
 \subsection{beautifulsoup4}
 Biblioteca de python diseñada para la extracción de datos de documentos del tipo HTML o XML. Nos hace posible navegar entre las datos de manera muy eficiente. Es utilizada sobre todo para webscrapping, recopilación de información de sitios web. 

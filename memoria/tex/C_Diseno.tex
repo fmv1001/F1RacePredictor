@@ -16,10 +16,10 @@ La mayor parte de los datos están recopilados de una API llamada \href{https://
     \item Circuitos: debemos ejecutar el archivo \texttt{2\_GetCircuits} para obtener los datos de los circuitos. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Circuits.csv}.
     \item Equipos: debemos ejecutar el archivo \texttt{3\_GetConstructors} para obtener los datos de los equipos. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Constructors.csv}.
     \item Resultados de las carreras: debemos ejecutar el archivo \texttt{4\_GetResults} para obtener los datos de las carreras. Una vez ejecutados se guardan el la capeta \textit{code/data} con el nombre \texttt{Results.csv}.
-    \item Clasificaciones: también se pueden obtener datos de las clasificaciones de esta API, peor como no se han usuado no se han guardado, En caso de necesitarlo se debe ejecutar el archivo \texttt{6\_GetQualyDataErgast}. Una vez ejecutados se guardarían el la capeta \textit{code/data} con el nombre \texttt{qualifying.csv}.
+    \item Clasificaciones: también se pueden obtener datos de las clasificaciones de esta API, pero como no se han usado, no se han guardado, En caso de necesitarlo se debe ejecutar el archivo \texttt{6\_GetQualyDataErgast}. Una vez ejecutados se guardarían el la capeta \textit{code/data} con el nombre \texttt{qualifying.csv}.
 \end{enumerate}
 
-Además, se han obtenido datos del clima de las carreras de la página de la wikipedia a través de webscrapping, para ello ejecutaremos el archivo \texttt{5\_GetWeatherData} para obtener los datos meteorológicos. Una vez ejecutado se añade en los datos de los resultados y se guardan el la capeta \textit{code/data} con el nombre \texttt{final\_results.csv}.
+Además, se han obtenido datos del clima de las carreras de la página de la Wikipedia a través de webscrapping, para ello ejecutaremos el archivo \texttt{5\_GetWeatherData} para obtener los datos meteorológicos. Una vez ejecutado se añade en los datos de los resultados y se guardan el la capeta \textit{code/data} con el nombre \texttt{final\_results.csv}.
 
 \subsection{Procesado}
 
@@ -39,7 +39,7 @@ Para procesar los datos se ha seguido la siguiente estrategia:
             \item \texttt{coded\_manual\_data.csv}: datos seleccionados manualmente.
             \item \texttt{codificadores.pkl}: se han guardado lo codificadores utilizados para cada característica en la carpeta \textit{code/coders}.
         \end{itemize}
-    \item Emtrenamiento de los modelos: los modelos han sido entrenados en el archivo \texttt{Training}, el cual ha generado los archivos con las características más relevantes para el ajuste posterior en la carpeta \textit{code/best\_split\_data}. Además, se han guardado los modelos entrenado en la carpeta \textit{code/train\_models}.
+    \item Emtrenamiento de los modelos: los modelos han sido entrenados en el archivo \texttt{Training}, el cual ha generado los archivos con las características más relevantes para el ajuste posterior en la carpeta \textit{code/best\_split\_data}. Además, se han guardado los modelos entrenados en la carpeta \textit{code/train\_models}.
     \item Ajuste de los modelos: encontramos los modelos con ajuste en el archivo \texttt{TrainingParams}, que ha guardado el modelo con mejor ajuste en la carpeta \textit{code/train\_models}.
 \end{enumerate}
 

@@ -2,10 +2,189 @@
 
 \section{Introducción}
 
+La documentación técnica de programación se describe en este anexo. Para facilitar que cualquiera pueda trabajar en este proyecto o continuarlo, se incluye la instalación de IDEs, la estructura de archivos y de la aplicación, su compilación o la configuración de varios servicios utilizados.
+
 \section{Estructura de directorios}
+
+Podemos encontrar la estructura del proyecto en el \href{https://github.com/fmv1001/F1RacePredictor}{repositorio de GitHub}, Descrita a continuación:
+
+\begin{itemize}
+    \item \textbf{/:} Es el directorio raíz del proyecto, en el podemos encontrar el README del repositorio, el documento de licencia y el archivo .gitignore (el cual nos permite ignorar documentos en el rastreo de control de versiones), además de los archivos de requerimientos y runtime.
+    \item \textbf{/code/:} Contiene los ficheros para la recopilación, preparación, limpieza y codificación de los datos, además del entrenamiento  y ajuste de los modelos. También contiene el fichero con el que se han generado los gráficos necesarios.
+    \item \textbf{/code/data/:} datos descargados y codificados.
+    \item \textbf{/code/data/data\_trained\_models/:} datos utilizados en los entrenamientos que obtuvieron los mejores datos de la cross-validation.
+    \item \textbf{/code/trained\_models/:} contiene los modelos entrenados.
+    \item \textbf{/code/best\_split\_data/:} contiene la mejor división de los datos para los modelos a ajustar.
+    \item \textbf{/code/coders/:} codificadores utilizados.
+    \item \textbf{/docs/:} encontraremos toda la documentación relativa al proyecto.
+    \item \textbf{/docs/img/:} alberga las imágenes empleadas en la documentación relativa al proyecto.
+    \item \textbf{/docs/text/:} En la carpeta ``\textit{text}'' veremos los diversos documentos que se combinan para formar los documentos maestros.
+    \item \textbf{/app/:} contiene los archivos relativos a la aplicación.
+    \item \textbf{/app/release/:} contiene el ejecutable de la aplicación.
+    \item \textbf{/app/presentation/:} contiene la capa de presentación de la aplicación.
+    \item \textbf{/app/logic/:} contiene lo necesarios para la funcionalidad de la aplicación.
+    \item \textbf{/app/data/:} datos necesarios usados en la aplicación.
+    \item \textbf{/app/data/circuits:} imágenes de los circuitos usados en la aplicación.
+    \item \textbf{/app/data/datacsv:} datos en formato csv de los pilotos, circuitos y constructores.
+    \item \textbf{/app/data/drivers:} imágenes de los pilotos usados en la aplicación.
+    \item \textbf{/app/data/img:} podremos descubrir las imágenes utilizadas en la aplicación.
+    \item \textbf{/app/data/models:} encontraremos en esta carpeta los modelos entrenados y los codificadores usados por la app.
+    \item \textbf{/app/data/pos:} encontraremos en esta carpeta las imágenes de las posiciones usadas para mostrar la predicción.
+    \item \textbf{/app/data/weather:} encontraremos en esta carpeta las imágenes del clima a escoger en la aplicación.
+
+\end{itemize}
 
 \section{Manual del programador}
 
+Los futuros desarrolladores que trabajen en el proyecto pueden consultar este manual para obtener orientación. Se detallará cómo configurar el entorno de desarrollo, dónde obtener el código fuente y qué se requiere para que funcione.
+
+\subsection{Requisitos}
+
+\begin{itemize}
+\item
+	Python 3.
+\item
+	Visual Studio Code.
+\item
+	GitHub Desktop o Git y Git LFS.
+\end{itemize}
+
+En la siguiente sección se muestra como instalar y configurar correctamente todos los componente.
+
+\subsection{Entorno de desarrollo}
+
+\subsubsection{Python 3}
+
+Instalación de Python 3 en Windows:
+\begin{enumerate}
+    \item Primero nos dirigirnos a la página oficial del Python en el apartado de \href{https://www.python.org/downloads/}{descargas}.
+    \item En segundo lugar descargaremos el archivo de instalación pinchando en ``\textit{Download Python 3.X.X}''.
+    	\imagen{pythoninstall}{Página oficial de descargas de Python.}
+    \item Después ejecutamos el archivo descargado y dejamos seleccionada la opción de ``\textit{Add Python to path}'', y más tarde hacemos clic en ``\textit{Install Now}''
+    	\imagen{pythoninstall1}{Instalador de Python para Windows.}
+    \item Dejamos terminar la instalación.
+    	\imagen{pythoninstall2}{Instalador de Python para Windows.}
+    	\imagen{pythoninstall3}{Instalador de Python para Windows.}
+\end{enumerate}
+
+Instalación en Linux de Python 3:
+\begin{enumerate}
+    \item Primero vamos a dirigirnos a la terminal de Linux.
+    \item En segundo lugar comprobamos si ya lo tenemos instalado gracias al comando ``\textit{python3 --version}''.
+    \item Si no lo tenemos instalado, ejecutaremos el comando ``\textit{sudo apt-get install python3.6}''
+    \item Esperamos a que termine la instalación y ya tendremos Python 3 instalado.
+\end{enumerate}
+
+\subsubsection{Visual Studio Code}
+
+Instalación de Visual Studio Code:
+
+\begin{enumerate}
+\item
+	Primero debemos dirigirnos a la página oficial de \href{https://code.visualstudio.com/}{Visual Studio Code}.
+\item
+	En segundo lugar descargaremos el archivo de instalación en función del sistema operativo que tengamos.
+\imagen{vscinstall}{Página oficial de Visual Studio Code.}
+\item 
+	Después únicamente debemos llevar a cabo los siguientes pasos del instalador.
+\imagen{vscinstall3}{Instalador de Visual Studio Code para Windows.}
+\imagen{vscinstall4}{Instalador de Visual Studio Code para Windows.}
+\imagen{vscinstall5}{Instalador de Visual Studio Code para Windows.}
+\imagen{vscinstall6}{Instalador de Visual Studio Code para Windows.}
+\imagen{vscinstall7}{Instalador de Visual Studio Code para Windows.}
+
+\item
+	En el sistema operativo linux podremos ejecutar el comando \textit{sudo apt install code} \cite{vscforlinux}.
+\end{enumerate}
+
+\subsubsection{GitHub Desktop}
+
+Instalación de GitHub Desktop en windows:
+
+\begin{enumerate}
+\item
+	Primero debemos dirigirnos a la página oficial de \href{https://desktop.github.com/}{GitHub Desktop}.
+\item
+	En segundo lugar descargaremos el archivo de instalación en función del sistema operativo que tengamos (sólo disponible en Windows y MacOS).
+\imagen{githubdesktop}{Página oficial de GitHub Desktop.}
+\item 
+	Después únicamente debemos llevar a cabo los siguientes pasos del instalador (es posible que el instalador no redirija a un navegador web para iniciar sesión).
+\imagen{githubdesktop1}{Instalador de GitHub Desktop para Windows.}
+\imagen{githubdesktop2}{Instalador de GitHub Desktop para Windows.}
+\imagen{githubdesktop3}{Instalador de GitHub Desktop para Windows.}
+
+Esta aplicación sólo está disponible en Windows y MacOS pero en Linux contamos con la herramienta Git, tendremos las mismas funcionalidades pero mediante comandos.
+\end{enumerate}
+
+\subsubsection{Git}
+
+Instalación de Git:
+
+\begin{enumerate}
+    \item Primero vamos a dirigirnos a la terminal de Linux.
+    \item En segundo lugar comprobamos si ya lo tenemos instalado gracias al comando ``\textit{git -version}''.
+    \item Si no lo tenemos instalado, ejecutaremos el comando ``\textit{sudo apt-get install git}''
+    \item Esperamos a que termine la instalación y ya tendremos Git instalado.
+\end{enumerate}
+
+\subsubsection{Git LFS}
+
+Instalación de Git LFS:
+
+\begin{enumerate}
+    \item Primero vamos a dirigirnos a la terminal de Linux.
+    \item En segundo lugar comprobamos si ya lo tenemos instalado gracias al comando ``\textit{git lfs --version}''.
+    \item Si no lo tenemos instalado, ejecutaremos el comando ``\textit{sudo apt-get install git lfs}''
+    \item Esperamos a que termine la instalación y ya tendremos Git LFS instalado.
+\end{enumerate}
+
 \section{Compilación, instalación y ejecución del proyecto}
 
-\section{Pruebas del sistema}
+Antes de continuar con la compilación, instalación y ejecución del proyecto, debemos descargar el \href{https://github.com/fmv1001/F1RacePredictor}{repositorio de GitHub}.
+Para ello copiaremos la dirección del repositorio (\textit{https://github.com/fmv1001/F1RacePredictor}) y en la herramienta GitHub desktop elegimos la opción \textit{"Clone a repository from the Internet..."} (figura \ref{fig:githubdesktop3}) que clonara el repositorio en una carpeta local de nuestro dispositivo al selecionar el apartado URL y pegar la del repositorio tal como vemos en la imagen \ref{fig:githubdesktop4}.
+
+\imagen{githubdesktop4}{Clonación del repositorio con GitHub Desktop.}
+
+En Linux únicamente debemos ejecutar este comando en una consola cuando estemos en la carpeta que deseemos alojarlo: ``\textit{git lfs clone https://github.com/fmv1001/F1RacePredictor}''
+
+\subsubsection{Importar el proyecto en Visual Studio Code}\label{importtovsc}
+
+Una vez instalada la herramienta Visual Studio Code:
+
+\begin{enumerate}
+    \item Abriremos Visual Studio Code.
+    \item Nos desplazaremos hasta la esquina superior izquierda y pinchamos en \textit{File > Open Folder...}
+    	\imagen{vscimport}{Importar proyecto en Visual Studio Code.}
+    \item Una vez lleguemos a este momento, debemos navegar hasta la carpeta en la que hemos clonado el proyecto, luego hacemos clic en \textit{"Seleccionar carpeta"}. En este punto sólo debemos esperar a que Visual Studio Code cargue los archivos del proyecto.
+    \imagen{vscimport1}{Proyecto importado en Visual Studio Code}
+\end{enumerate}
+
+\subsection{Añadir funcionalidad al sistema}
+
+Una vez importado el proyecto, podremos realizar las modificaciones deseadas.
+Si queremos añadir alguna funcionalidad, debemos realizar como mínimo el siguiente paso:
+
+\begin{itemize}
+    \item Crear una nueva rama en desde la rama principal (\textit{main}) del proyecto desde GitHub Desktop, imagen \ref{fig:newbranch}.
+     \imagen{newbranch}{Crear una nueva rama desde GitHub Desktop}
+    O bien en Linux ejecutar el siguiente comando en una terminal:
+        \textit{git checkout -b export-data main}
+\end{itemize}
+
+\subsection{Compilación del código del proyecto}
+
+Para compilar tanto la aplicación como los demás archivos, únicamente debemos ejecutarlos con python.
+
+\subsection{Ejecución del sistema}
+
+Para la ejecución de la aplicación  deberemos haber instalado previamente
+Visual Studio Code y Python 3 en el dispositivo. Tras la instalación de los componentes, nos dirigimos a Visual Studio Code, importamos
+el proyecto (tal como se explica en manual D.4). Después abrimos el
+archivo AppMain.py y en la esquina superior derecha ejecutamos pinchando
+el el icono play/run. 
+
+\imagen{appmainrun}{Ejecución de la app desde Visual Studio Code}
+
+También podremos ejecutar la app desde comandos situándonos en
+la carpeta /app y desde el terminal ejecutamos el comando:
+\textit{python3 presentation/AppMain.py}

@@ -6,7 +6,7 @@ Esta sección tiene como objetivo recopilar las facetas más fascinantes de la e
 
 Desde mi infancia he tenido la suerte de poder interactuar con el apasionante mundo del deporte y más en concreto de la Fórmula 1. Puedo recordar claramente haber visto carreras en la televisión con mi familia y maravillarme con la velocidad, la habilidad y la emoción que caracterizan a este deporte de élite. También, esa época coincidió con el éxito de nuestro representante en este deporte, Fernando Alonso. Viví sus dos mejores años, 2005 y 2006. Jamás olvidaré sus luchas con Michael Schumacher, considerado uno de los mejores pilotos de la historia sino el mejor.
 
-Con el tiempo mi terés por la Fórmula 1 se hizo más fuerte. Comencé por investigar a los pilotos más laureados y a los equipos míticos que han dejado una larga huella en la historia de este deporte como pueden ser Ferrari o McLaren. Más adelante continué por interesarme en la evolución de los monoplazas como resultado de los avances tecnológicos y viendo como cada vez se volvían más rápidos, precisos y efectivos.
+Con el tiempo mi interés por la Fórmula 1 se hizo más fuerte. Comencé por investigar a los pilotos más laureados y a los equipos míticos que han dejado una larga huella en la historia de este deporte como pueden ser Ferrari o McLaren. Más adelante continué por interesarme en la evolución de los monoplazas como resultado de los avances tecnológicos y viendo como cada vez se volvían más rápidos, precisos y efectivos.
 
 Es por todo esto que decidí realizar mi Trabajo de Fin de Máster sobre este increíble deporte que es la Fórmula 1. Además, en él es extremadamente importante el uso de modelos predictivos, tanto para predecir el ritmo del coche y el de sus rivales, como para controlar el desgaste de los neumáticos o la potencial pérdida de tiempo en boxes durante una carrera.
 
@@ -181,11 +181,7 @@ Estas son las características elegidas:
 
 \subsection{Selección de características automática}
 
-Para esta tarea contemplamos dos métodos muy efectivos, la eliminación recursiva o \textit{Recursive Feature Elimination} y la eliminación hacia atrás o \textit{Backward Elimination}.
-
-La técnica de eliminación hacia atrás comienza con todas las características y elimina una a una en cada iteración. Entonces, en cada iteración de esta técnica se entrena y evalúa un modelo con las variables disponibles. La característica menos significativa es la eliminada, tomando como criterio el peso de la misma en esa iteración. Esto se repite hasta llegar al criterio de parada.
-
-Elgoritmo RFE o \textit{Recursive Feature Elimination}, realmente es un tipo de eliminación hacia atrás, pero tiene la ventaja de ser compatible con varios algoritmos de aprendizaje automático, lo que lo convierte en una herramienta flexible y adaptable. Se puede combinar con algoritmos de regresión, clasificación u otras estrategias de modelado, brindándonos la flexibilidad de manejar varios problemas y conjuntos de datos. Además, proporciona una medida de importancia o relevancia para cada característica en función de cómo contribuye al modelo final. Dado que nos permite identificar los rasgos que tienen mayor influencia en la toma de decisiones del modelo, será particularmente útil para nuestro propósito.
+Para esta tarea contemplamos dos métodos muy efectivos, la eliminación recursiva o \textit{Recursive Feature Elimination} y la eliminación hacia atrás o \textit{Backward Elimination}, que ya fueron mencionados en la sección \ref{RFE}.
 
 Este algoritmo se ha combinado con varios modelos para hacer una selección más óptima. Estos modelos son: \textit{Decision Tree Regressor} y \textit{Linear Regression}. Los dos son modelos de regresión ya que queremos una elección lineal de características. Por un lado los árboles de decisión son modelos muy versátiles que nos van a permitir capturar las relaciones no lineales y podremos detectar interacciones entre las diferentes características. Y por otra parte el algoritmo de regresión lineal tiene la ventaja de ser más interpretable y computacionalmente más eficiente.
 
@@ -228,24 +224,25 @@ Inicialmente se pensó en la función \texttt{train\_test\_split} de \textit{sci
 Finalmente se utilizará la validación cruzada para encontrar la mejor división de datos posible, manteniendo el 20\% de datos de prueba. La validación cruzada o cross-validation es una técnica que consiste en dividir el conjunto de datos en subconjuntos de entrenamiento y prueba, y evaluar cada subconjunto para encontrar el más óptimo. Para ello se utiliza la librería \textit{scikit-learn} y su algoirtmo KFold, el cual realiza divisiones del conjunto de datos en K partes iguales, utilizando K - 1 partes para el entrenamiento y la parte restante para validación en cada  una de las iteraciones. Asignando a K el valor de 5 para obtener ese porcentaje del 80\% de entrenamiento frente al 20\% de prueba. Con esto se logra maximizar la utilización de datos, gracias a permitir el uso de todo el conjunto tanto para entrenamiento como para validación.
 
 \subsection{Modelos del entrenamiento}
-Para el cálculo de las posiciones de carrera, se van a utilizar los siguientes modelos de regresión: Linear Regression, Decision Tree Regressor, Random Forest Regressor y Support Vector Regression (SVR).
+
+Para el cálculo de las posiciones de carrera, se van a utilizar los siguientes modelos de regresión ya mencionados en la sección \ref{algoritmosreg}:
+
+\begin{enumerate}
+    \item Linear Regression.
+    \item Decision Tree Regressor.
+    \item Random Forest Regressor.
+    \item Support Vector Regression.
+\end{enumerate}
+
+Y para el cálculo del \textit{poleman} y ganador, problemas de clasificación, se usarán los algoritmos de clasificación especificados en la sección \ref{algoritmosclas}: 
 
 \begin{itemize}
-    \item Linear Regression: este modelo tiene como objetivo crear una relación lineal entre la variable objetivo y las demás variables. Se aplica a problemas de regresión donde el objetivo es predecir valores numéricos. Además este modelo es sumamente eficiente en cuanto computación.
-    \item Decision Tree Regressor: es un modelo que se basa en árboles de decisión. Crea una estructura de árbol tratando de que las ramas representen posibles respuestas a las preguntas que forman los nodos con respecto a las características. Cada hoja del árbol recibe un valor de salida tras la división recursiva en subconjuntos del conjunto inicial de datos. Se aplica en problemas que requieran identificar relaciones no lineales.
-    \item Random Forest Regressor: el propósito del modelo es hacer predicciones a través de la combinación de varios árboles de decisión. El resultado final se obtienen promediando las predicciones de cada uno de los arboles, los cuales se han entrenado con una muestra aleatoria diferente a las demás. Además, cuenta con la ventaja de reducir el sobreajuste y aumentar la eficiencia. Es aplicado a problemas con características de alta dimensión y puede gestionar un gran volumen de datos.
-    \item Support Vector Regression: modelo que predice utilizando vectores de soporte. Los puntos de los vectores de soporte se encuentran en el borde del límite de decisión o en la zona que afectará en mayor medida cómo se define la función de regresión. El modelo controla una tolerancia de error, buscando una función de regresión que se ajuste mejor a los datos y reduzca la discrepancia entre la predicción y el valor real. Cuando nuestros datos contienen características no lineales o incluso con valores atípicos, este modelo es sumamente útil en problemas de regresión.
-\end{itemize}
-
-Y para el cálculo del \textit{poleman} y ganador, problemas de clasificación, se usará: Logistic Regression, Decision Tree Classifier, Random Forest Classifier, Support Vector Classification (SVC), KNeighbors Classifier, Gaussian NB.
-
-\begin{itemize}
-    \item Logistic Regression: es utilizado para resolver problemas donde las variables objetivo son binarias o representan categorías. Se usa una función logística para calcular la probabilidad con la que una instancia dada pertenezca a una clase en particular. Se sustenta en la relación lineal encontrada entre características y variable objetivo. Además, convierte el resultado en una probabilidad gracias a una función de activación. Utilizado sobre todo para problemas de clasificación binaria, pero se puede expandir a problemas con variables objetivo categóricas.
-    \item Decision Tree Classifier: funciona igual que el Decision Tree Regressor pero con la particularidad de que en este cada hoja del árbol recibe una etiqueta de clase tras la división recursiva del conjunto de datos y no un valor.
-    \item Random Forest Classifier: al igual que en la regresión, realiza las predicciones a través de la combinación de varios árboles de decisión. El resultado se obtiene promediando la clasificación total de los árboles.
-    \item Support Vector Classification: los vectores utilizados en este modelo se usan para dividir instancias en clases. La diferencia con el SVR es que ahora buscamos el mejor hiper plano en el cual haya la mayor distancia de mayor entre clases. Permite el uso de datos tanto linealmente separables como no separables gracias a funciones kernel. Gran elección en problemas de clasificación de variables categóricas o binarias.
-    \item KNeighbors Classifier: usa el algoritmo K-Nearest Neighbors. Asigna etiquetas de los k vecinos cercanos a las instancias. Se vale de la noción de que las instancias parecidas pertenecen a la misma clase con frecuencia. Es muy eficiente y sencillo para problemas de clasificación siempre y cuando la elección del número de k vecinos no sea demasiado alta.
-    \item Gaussian NB (Naive Bayes): este modelo se basa en el teorema de Bayes, además de asumir que los datos forman una distribución gaussiana. Utiliza la regla de Bayes para determinar la probabilidad de pertenecer a una clase en particular. Se asume la independencia entre características, algo ingenuo, de ahí su nombre. Para problemas de clasificación con variables continuas y distribuidas en forma normal es muy eficiente.
+    \item Logistic Regression.
+    \item Decision Tree Classifier.
+    \item Random Forest Classifier.
+    \item Support Vector Classificatio.
+    \item KNeighbors Classifier.
+    \item Gaussian NB (Naive Bayes).
 \end{itemize}
 
 \subsection{Comparación de las soluciones y evaluación de los diferentes modelos utilizados}
@@ -381,7 +378,7 @@ Para hacer un primer boceto quise contar ya con la librería que usaría para po
 
 Inicialmente escogí \textit{Tkinter} por su simpleza, su curva de aprendizaje es muy corta. Con esta librería realicé el primer boceto, con unos pocos desplegables en formato vertical para seleccionar el piloto y demás datos, el cual podemos ver en la imagen \ref{fig:boceto_app_ini}:
 
-\imagen{boceto_app_ini}{Primer boceto de la interfaz de usaurio.}{.4}
+\imagen{boceto_app_ini}{Primer boceto de la interfaz de usuario.}{.4}
 
 La disposición vertical de los desplegables no me convencía así que decidí ponerlos en horizontal y añadir una imagen de fondo (\ref{fig:boceto3_app}).
 
@@ -403,13 +400,13 @@ Después se debe escoger el cima en carrera, lo cual decidí utilizar los neumá
 
 \imagen{escogerclima}{Diseño de la pantalla dónde escogemos el clima.}{.7}
 
-Por último entramos en la pestaña dónde podemos hacer las predicciones, contamos con 3 botones para predecir y uno para ir al inicio. En la imagen \ref{fig:pred_pos} podemos ver una predicción de los resultados del GP de mónaco. Para rpedecir el ganador o poleman se verá como ilustra la figura: 
+Por último entramos en la pestaña dónde podemos hacer las predicciones, contamos con 3 botones para predecir y uno para ir al inicio. En la imagen \ref{fig:pred_pos} podemos ver una predicción de los resultados del GP de Mónaco. Para predecir el ganador o poleman se verá como ilustra la figura: 
 
 \imagen{pred_pos}{Diseño de la pantalla dónde hacemos predicciones de el resultado total.}{.7}
 
 \imagen{pred_win}{Diseño de la pantalla dónde hacemos predicciones del ganador.}{.7}
 
-En el caso de que el circuito escogido aún no haya concluido la clasificación y no se conozcan las posiciones de salida, debemos escocger una a una las posiciones de salida de los pilotos que deseemos para hacer la predicción. Se muestra esta pestaña para elegir la posición de cada piloto \ref{fig:escogergrid}, las cuales se eliminan una vez seleccionadas para un piloto, como vemos en la figura \ref{fig:escogergrid2}
+En el caso de que el circuito escogido aún no haya concluido la clasificación y no se conozcan las posiciones de salida, debemos escoger una a una las posiciones de salida de los pilotos que deseemos para hacer la predicción. Se muestra esta pestaña para elegir la posición de cada piloto \ref{fig:escogergrid}, las cuales se eliminan una vez seleccionadas para un piloto, como vemos en la figura \ref{fig:escogergrid2}
 
 \imagen{escogergrid}{Diseño de la pantalla dónde escogemos las posiciones de salida del piloto.}{.4}
 

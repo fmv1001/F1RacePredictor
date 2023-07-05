@@ -1,3 +1,57 @@
 \capitulo{6}{Trabajos relacionados}
 
 Este apartado sería parecido a un estado del arte de una tesis o tesina. En un trabajo final grado no parece obligada su presencia, aunque se puede dejar a juicio del tutor el incluir un pequeño resumen comentado de los trabajos y proyectos ya realizados en el campo del proyecto en curso. 
+
+\section{A machine learning approach to predict the winner of the next F1 Grand Prix - Veronica Nigro}
+Este trabajo es un proyecto desarrollado por Veronica Nigro. Este proyecto se encuentra documentado en un \href{https://towardsdatascience.com/formula-1-race-predictor-5d4bfae887da}{artículo} de \href{https://towardsdatascience.com/}{Towards Data Science}, una plataforma en línea dedicada a compartir información y recursos sobre ciencia de datos, inteligencia artificial y aprendizaje automático. Este proyecto ha construido un algoritmo para predecir el ganador en las 21 carreras de Fórmula 1 de la temporada 2019 \cite{towardsdatascience:f1veronigro}. Podemos encontrar el repositorio que alberga el proyecto en el siguiente \href{https://github.com/veronicanigro/Formula_1/blob/master/README.md}{enlace} o en el propio artículo. 
+
+
+\section{Formula 1 Race Prediction}
+Formula 1 Race Prediction es un proyecto de aprendizaje automático utilizando el módulo Scikit-learn en Python para predecir el resultado de las carreras de Fórmula 1. El objetivo de este predictor es predecir si el piloto gana (primera posición), entra en los puntos (entre el segundo y el décimo piloto) o se queda fuera de los puntos (undécimo o peor), además cuenta con una interfaz gráfica que proporciona esta información (podemos verlo en la figura \ref{fig:trabajo_relacionado_2}). El trabajo se encuentra alojado en el repositorio \href{https://github.com/Sloopy3333/Formula-1-Prediction}{Formula 1 Race Prediction}.
+
+\imagen{trabajo_relacionado_2}{Interfaz de Formula 1 Race Prediction.}{.8}
+
+\section{Ventajas y debilidades respecto a la competencia}
+
+\begin{table}[h!]
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{lccc}
+\toprule
+Características                 & AppFran     & F1 Grand Prix 
+Veronica Nigro & Formula 1 Race Prediction   \\
+\midrule
+Predicción del ganador               & \cellcolor{green!25} {$\checkmark$} & \cellcolor{green!25} {$\checkmark$}  & \cellcolor{green!25} {$\checkmark$}  \\
+Interfaz de usuario             & \cellcolor{green!25} {$\checkmark$} & \cellcolor{red!25} {$\times$}  & \cellcolor{green!25} {$\checkmark$}  \\
+Gratuito                        & \cellcolor{green!25} {$\checkmark$} & \cellcolor{green!25} {$\checkmark$}  & \cellcolor{green!25} {$\checkmark$}  \\
+Predicción resultado carrera                        & \cellcolor{green!25} {$\checkmark$} & \cellcolor{red!25} {$\times$}  & \cellcolor{red!25} {$\times$}  \\
+Predicción del ganador de la pole                        &
+\cellcolor{green!25} {$\checkmark$} & \cellcolor{red!25} {$\times$}  & \cellcolor{red!25} {$\times$}  \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Comparativa de características de los proyectos.}
+\label{comparativa-proyectos}
+\end{table}
+
+Las principales fortalezas del proyecto son:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Funcionalidades}: Contamos con diferentes tipos de predicciones que permiten al usuario final elegir entre las diferentes opciones. 
+\item
+  \textbf{Interfaz de usuario}: la interfaz de usuario de la aplicación es muy intuitiva, sencilla y con una curva de aprendizaje rápida. Además, es accesible a todo el mundo, incluso sin conocimiento previo del tema.
+\item
+  \textbf{Aplicación gratuita}.
+\end{itemize}
+
+Las principales debilidades son:
+
+\begin{itemize}
+\tightlist
+\item
+  Cuenta con una menor probabilidad de acierto en el caso de la predicción del resultado total de la carrera.
+\item
+  Menor dimensionalidad en los datos.
+\end{itemize}

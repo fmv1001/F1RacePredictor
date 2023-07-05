@@ -8,7 +8,7 @@ En el presente anexo se describirá la planificación llevada a cabo en el proye
 
 Se va a seguir una planificación por \textit{sprints}, la cual se explica a continuación.
 
-\subsection{Sprint 0: Planificación y Objetivos del Proyecto (2 semana)}
+\subsection{Sprint 0: Planificación y Objetivos del Proyecto}
 La planificación se llevo a cabo en 3 fases.
 \begin{itemize}
     \item
@@ -23,7 +23,7 @@ La planificación se llevo a cabo en 3 fases.
 \end{itemize}
 Este sprint se previó en una semana de duración pero realmente llevó a cabo en dos, para realizar una buena planificación y saber a dónde nos lleva el desarrollo del proyecto.
 
-\subsection{Sprint 1: Comprensión del problema y buscar fuentes de datos (1 semana)} 
+\subsection{Sprint 1: Comprensión del problema y buscar fuentes de datos} 
 Este sprint se dividió en varias tareas:
 \begin{itemize}
     \item
@@ -38,13 +38,13 @@ Este sprint se dividió en varias tareas:
 
 Este sprint se llevó a cabo en el tiempo esperado.
 
-\subsection{Sprint 2: Descarga de datos (3 semanas)}
+\subsection{Sprint 2: Descarga de datos}
 Para llevar a cabo el sprint se realizaron las siguientes tareas
 \begin{itemize}
     \item 
     Creación de medios para la obtención de los datos.
     Una vez escogida la fuente se deben crear los medios necesarios para descargar esos datos. El objetivo de esta tarea fue crear clientes python para obtener los datos de la API de Ergast.
-    Además, se obtuvieron datos de la página web de la página ofical de la Fórmula 1, que al final se descartaron por falta de información, lo que retrasó el proyecto algunos días. 
+    Además, se obtuvieron datos de la página web de la página oficial de la Fórmula 1, que al final se descartaron por falta de información, lo que retrasó el proyecto algunos días. 
     \item
     Recopilación de los datos necesarios.
     En este momento se descargaron todos los datos suministrados por la API y además se decidió obtener algunos datos más para el entrenamiento, como puede ser la altitud del circuito con respecto al nivel del mar, el clima de las carreras, etc.
@@ -52,7 +52,7 @@ Para llevar a cabo el sprint se realizaron las siguientes tareas
 
 Este sprint se planificó para una semana pero realmente se tardaron 3 semanas debido a mi situación personal, estoy trabajando a tiempo completo y no dispuse de mucho tiempo para este proyecto, además del tiempo perdido tras la recopilación de datos en la página de la Fórmula 1.
 
-\subsection{Sprint 3: Preparación de los datos (1 semanas)}
+\subsection{Sprint 3: Preparación de los datos}
 Para llevar a cabo la preparación de los datos se realizaron los siguientes pasos
 \begin{itemize}
     \item 
@@ -60,7 +60,7 @@ Para llevar a cabo la preparación de los datos se realizaron los siguientes pas
     El objetivo de este paso fue preparar los datos descargados, entre esta preparación entra mapear los cambios de nombre de las escuderías para que no se tome a una escudería como dos diferentes, cambiar la nacionalidad de los pilotos por su país de procedencia y que coincida con el país de procedencia del equipo y dónde se encuentra el circuito entre otras cosas.
     \item
     Creación de nuevos datos a partir de los ya presentes,.
-    Este paso trató de crear nuevas características para los entrenamientos o testeo de los modelos. Se crearón las siguientes nuevas características: fiabilidad de los coches, consistencia del piloto, edad del piloto, ganador de la carrera, ganador de la \textit{pole}, y se generó la clasifición del mundial de pilotos y equipos de cada año.
+    Este paso trató de crear nuevas características para los entrenamientos o testeo de los modelos. Se crearon las siguientes nuevas características: fiabilidad de los coches, consistencia del piloto, edad del piloto, ganador de la carrera, ganador de la \textit{pole}, y se generó la clasificación del mundial de pilotos y equipos de cada año.
     \item 
     Limpieza de los datos.
     El objetivo de esta tarea fue limpiar los datos existentes, esto requiere eliminar o transformar los datos nulos. En este punto se decidió eliminar los datos nulos para que no afecten al entrenamiento.
@@ -68,8 +68,7 @@ Para llevar a cabo la preparación de los datos se realizaron los siguientes pas
 \end{itemize}
 Este sprint se llevo a cabo en el tiempo esperado, una semana.
 
-
-\subsection{Sprint 4: Selección de características y codificación de los datos (1 semanas)}
+\subsection{Sprint 4: Selección de características y codificación de los datos}
 Este sprint se dividió en dos tareas:
 \begin{itemize}
 \item 
@@ -81,7 +80,7 @@ Este sprint se dividió en dos tareas:
 \end{itemize}
 La duración del sprint se estimó en una semana y se cumplió lo esperado.
 
-\subsection{Sprint 5: Selección de los modelos, entrenamiento y evaluación de estos (2 semanas)}
+\subsection{Sprint 5: Selección de los modelos, entrenamiento y evaluación de estos}
 Para llevar a cabo este sprint se realizaron dos tareas
 \begin{itemize}
     \item Selección de modelos
@@ -90,18 +89,18 @@ Para llevar a cabo este sprint se realizaron dos tareas
     Esta tarea sirvió para entrenar los modelos iterativamente con cada uno de los datos escogidos y para cada una de las variables objetivo. Además se evalúa cada uno tras su entrenamiento guardando los datos en un diccionario para su posterior visionado.
 \end{itemize}
 
-\subsection{Sprint 6: Ajuste del modelo (3 semanas)}
+\subsection{Sprint 6: Ajuste del modelo}
 Sprint dividido en 2 tareas:
 \begin{itemize}
     \item 
     Seleccionar y recopilar los hiperparámetros de los modelos.
-    La función de esta tarea fue escoger que modelos se pretendían ajustar y recopilar sus hiperparámetros más importantes. Se decidió ajustar el modelo Random Forest Regressor y el Decision Tree Regressor de la predicción del resultado de posivión en carrera.
+    La función de esta tarea fue escoger que modelos se pretendían ajustar y recopilar sus hiperparámetros más importantes. Se decidió ajustar el modelo Random Forest Regressor y el Decision Tree Regressor de la predicción del resultado de posición en carrera.
     \item 
     Escoger los valores e iterar los entrenamientos.
-    El objetivo fue escoger uno o varios valores para cada parñámetro e iterar su entrenamiento con el fin de lograr el mayor ejuste posible.
+    El objetivo fue escoger uno o varios valores para cada parámetro e iterar su entrenamiento con el fin de lograr el mayor ajuste posible.
 \end{itemize}
 
-\subsection{Sprint 7: Implementación y despliegue en una aplicación de interacción (2 semanas)}
+\subsection{Sprint 7: Implementación y despliegue en una aplicación de interacción}
 Esta tarea se realizó en 3 tareas
 \begin{itemize}
     \item Diseñar la arquitectura de la aplicación.
@@ -292,4 +291,233 @@ El usuario debe aceptar activamente y ser informado de las cookies y de la infor
 A continuación se deben comprobar las licencias que controlan el software utilizado en el proyecto.
 
 Por lo tanto, revisemos las licencias que usan las bibliotecas  (tabla \ref{librarylicensetable}).
+
+\begin{longtable}[]{@{}llll@{}} 
+\toprule 
+\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+Dependencia\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+Versión\strut
+\end{minipage} & \begin{minipage}[b]{0.49\columnwidth}\raggedright\strut
+Descripción\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+Licencia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+Scikit-learn\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+1.2.2\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+Biblioteca uso de los modelos de predicción.\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+BSD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+Pandas\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+2.0.0\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+Biblioteca uso de los datos.\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+BSD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+Requests\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+2.28.2\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+Biblioteca para peticiones HTTP.\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+Apache v2.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+BeautifulSoup\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+4.12.2\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+Biblioteca para webscrapping.\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+Apache v2.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+Matplotlib\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+3.7.1\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+Biblioteca para crear gráficos.\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+BSD\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+PyQt\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+4.2.1\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+Biblioteca para crear la aplicación.\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+GPL\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Dependencias del proyecto.}
+\label{librarylicensetable}
+\end{longtable}
+
+Una vez conocemos las licencias que usan el software de terceros, buscaremos una licencia compatible con las mencionadas en la tabla \ref{librarylicensetable}, Apache v2.0, BSD y GNUGPL - GNU General Public License.
+
+La licencia más ajustada a este proyecto es la licencia \textit{GNU General Public License v3.0}, ya que es compatible con todas las licencias del software de terceros utilizadas en el proyecto. 
+Si quieres ver las licencias compatibles con \textit{GNU General Public License v3.0}, visita \cite{gnulicensecomp}.
+
+A continuación se muestran dos tablas \ref{gnuresumetable} y \ref{gnuresumetable1}, con los aspectos más relevantes de la licencia \textit{GNU General Public License v3.0}.
+
+\begin{longtable}[]{@{}llll@{}} 
+\toprule 
+\begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+Licencia\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Enlace\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Distribución\strut
+\end{minipage} & \begin{minipage}[b]{0.40\columnwidth}\raggedright\strut
+Conceder Marca registrada\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+GPL v3.0\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+sólo con GPLv 3.0.\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+Licencias de GNU copyleft.\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright\strut
+Copyleft.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Características de \textit{GPL v3.0}.}
+\label{gnuresumetable}
+\end{longtable}
+
+
+\begin{longtable}[]{@{}llllllll@{}} 
+\toprule 
+\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Licencia\strut
+\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+Concesión de patente\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
+Uso privado\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Sublicenciar\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
+Modificación\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+GPL v3.0\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+Sí.\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+Sí.\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Copyleft.\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+Sí.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Características de \textit{GPL v3.0}.}
+\label{gnuresumetable1}
+\end{longtable}
+
+Esta licencia está orientada al código en lugar de a la documentación, para la documentación del proyecto se ha seleccionado la licencia \textit{Creative Commons Attribution 4.0 o CC BY 4.0}..
+
+A continuación podemos ver en las tablas \ref{tab:ccaresumetable} y \ref{tab:ccaresumetable1}, los aspectos más relevantes de la licencia \textit{Creative Commons Attribution 4.0}.
+
+\begin{longtable}[]{@{}llll@{}} 
+\toprule 
+\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Licencia\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Enlace\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+Distribución\strut
+\end{minipage} & \begin{minipage}[b]{0.36\columnwidth}\raggedright\strut
+Conceder Marca registrada\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+CC BY 4.0\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Permisivo.\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
+Permisivo.\strut
+\end{minipage} & \begin{minipage}[t]{0.36\columnwidth}\raggedright\strut
+Permisivo.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Características de \textit{Creative Commons Attribution 4.0}.}
+\label{tab:ccaresumetable}
+\end{longtable}
+
+\begin{longtable}[]{@{}llllllll@{}} 
+\toprule 
+\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Licencia\strut
+\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+Concesión de patente\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
+Uso privado\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Sublicenciar\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright\strut
+Modificación\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+CC BY 4.0\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+No.\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+Sí.\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Permisivo.\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright\strut
+No.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Características de \textit{Creative Commons Attribution 4.0}.}
+\label{tab:ccaresumetable1}
+\end{longtable}
+
+\textbf{Resumen}
+
+Resumen de las licencias del proyecto \ref{resumelicense}.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule 
+\begin{minipage}[b]{0.50\columnwidth}\raggedright\strut
+Recurso\strut
+\end{minipage} & \begin{minipage}[b]{0.21\columnwidth}\raggedright\strut
+Licencia\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.50\columnwidth}\raggedright\strut
+Código fuente del proyecto\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+GPL v3.0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.50\columnwidth}\raggedright\strut
+Documentación\strut
+\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
+CC BY 4.0\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\caption{Resumen de las licencias escogidas para del proyecto.}
+\label{resumelicense}
+\end{longtable}
+
 
