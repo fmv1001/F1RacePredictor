@@ -7,6 +7,6 @@ Un modelo de predicción de resultados resume a la perfección la fusión de la 
 
 El presente documento muestra el empleo de técnicas de aprendizaje automático para realizar predicciones sobre los resultados en la competición automovilística Fórmula 1. Se pretender llevar a cabo este proyecto a través del lenguaje de programación Python, así como proporcionar una aplicación desde la cual podremos gestionar dichas predicciones. Para llevarlo a cabo, se han utilizado el entorno de desarrollo Visual Studio Code.
 
-![alt text](https://github.com/fmv1001/F1RacePredictor/blob/main/memoria/img/mvc.png)
+![alt text](https://github.com/fmv1001/F1RacePredictor/blob/main/app/data/img/home.png)
 
 Los archivos de la aplicación se encuentran en la carpeta `app`, los archivos de la recopilación, entrenamiento y ajuste en la carpeta `code`, y en la carpeta `docs` podemos encontrar la memoria y anexos (en ellos podemos ver los manuales necesarios tanto para instalar el sistema, como para seguir con su desarrollo).
