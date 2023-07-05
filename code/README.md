@@ -4,7 +4,7 @@ En esta carpeta podemos encontrar todos los archivos necesarios para la recopila
 # Descripción de ficheros importantes
 Vamos a explicar brevemente donde se encuentran los arvhivos más importantes de esta sección del proyecto.
 
-  - `/`: en esta misma carpeta se encuentran numerados todos los archivos en orden de ejecución para llevar a cabo los entrenamiento y ajustes en los archivos pertinentes.
+  - `/`: en la carpeta en las que nos encontramos podemos apreciar todos los archivos numerados en orden de ejecución para llevar a cabo los entrenamientos (`Training.ipynb`) y ajustes (`TrainingParams.ipynb`).
   - `/best_split_data/`: en esta carpeta encontramos las mejores divisiones de datos encontradas en el proceso de validación cruzada del entrenamiento.
   - `/coders`: la carpeta `coders` alberga los codificadores usados para cada característica en un único archivo llamado `codificadores.pkl`.
   - `/data/`: contiene los datos descargados y generados durante todo el proceso que se ha llevado a cabo, desde la recopilación hasta la codificación. 
